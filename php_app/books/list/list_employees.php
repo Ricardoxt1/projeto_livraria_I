@@ -5,7 +5,7 @@ $pdo = conectar();
 
 $tabela = 'employees';
 
-//busca de dados sobre os livros
+//busca de dados sobre funcionários
 
 $id = 1;
 $stmt = $pdo->prepare('SELECT * FROM ' . $tabela . ' WHERE id = :id');

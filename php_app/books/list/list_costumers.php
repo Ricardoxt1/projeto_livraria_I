@@ -5,7 +5,7 @@ $pdo = conectar();
 
 $tabela = 'costumers';
 
-//busca de dados sobre os livros
+//busca de dados sobre consumidores 
 
 $id = 1;
 $stmt = $pdo->prepare('SELECT * FROM ' . $tabela . ' WHERE id = :id');
@@ -16,7 +16,6 @@ $resultado = $stmt->fetchAll();
 
 
 foreach ($resultado as $key) {
-    print_r('Nome: ' . $key['name']);
     print_r('Nome: ' . $key['name']);
     print_r('<hr>PIS: ' . $key['pis']);
     print_r('<hr>Cargo: ' . $key['office']);

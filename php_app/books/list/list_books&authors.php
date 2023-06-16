@@ -4,7 +4,7 @@ include_once('../../config.php');
 $pdo = conectar();
 
 
-// Busca de dados sobre os livros
+// Busca de dados sobre os livros e autores
 
 $id = 1;
 
