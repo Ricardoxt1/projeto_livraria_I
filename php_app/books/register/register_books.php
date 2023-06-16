@@ -14,6 +14,6 @@ $smt->bindParam(':author_id', $author_id);
 $titule = 'branca de neve';
 $page = '500';
 $realese_date = '2001';
-$author_id = '2';
+$author_id = null;
 
 $smt->execute();
