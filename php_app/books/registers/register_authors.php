@@ -8,6 +8,5 @@ $tabela = 'authors';
 // Inserting authors into the database
 $smt = $pdo->prepare('INSERT INTO ' . $tabela . ' (name) VALUES (:name)');
 $smt->bindParam(':name', $name);
-$name = 'j.r.r. tolkein';
+$name = 'J.R.R. Tolkien';
 $smt->execute();
-
