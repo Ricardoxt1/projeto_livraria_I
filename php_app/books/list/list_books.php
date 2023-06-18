@@ -23,11 +23,12 @@ foreach ($resultado as $key) {
 }
 
 $id = 1;
-$stmtt = $pdo->prepare('SELECT a.name, b.titule, p.name from books as b right join authors as a on a.id = b.author_id left join publishers as p on p.id = b.publisher_id;');
+$stmtt = $pdo->prepare('SELECT authors.name, books.titule FROM books RIGHT JOIN authors ON authors.id = books.author_id WHERE authors.id = :author_id');
+$stmtt->bindValue(':author_id', $id);
 $stmtt->bindValue(':id', $id);
 $stmtt->execute();
 $resultadoo = $stmtt->fetchAll();
 
-foreach ($resultadoo as $key){
+foreach ($resultadoo as $key) {
     print_r($key);
 }
