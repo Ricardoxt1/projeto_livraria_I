@@ -3,7 +3,7 @@ include_once('../../config.php');
 $pdo = conectar();
 
 
-$id = 4;
+$id = 1;
 
 $sql = "DELETE FROM costumers WHERE id=?";
 $stmt= $pdo->prepare($sql);
