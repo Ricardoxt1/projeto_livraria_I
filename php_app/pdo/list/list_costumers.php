@@ -20,5 +20,6 @@ foreach ($resultado as $key) {
     print_r('<hr>PIS: ' . $key['pis']);
     print_r('<hr>Cargo: ' . $key['office']);
     print_r('<hr>Setor: ' . $key['departament']);
+    print_r('<hr>Setor: ' . $key['email']);
     print_r('<hr>Empresa: ' . $key['library_id']);
 }
