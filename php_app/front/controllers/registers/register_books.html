@@ -97,40 +97,37 @@
                             <h6
                                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
-                                <a class="link-secondary" href="#" aria-label="Add a new report">
-                                    <span data-feather="plus-circle" class="align-text-bottom"></span>
-                                </a>
                             </h6>
 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_costumers.html">
-                                <span data-feather="listagem" class="align-text-bottom"></span>
+                                <span data-feather="usuarios" class="align-text-bottom"></span>
                                 Usuarios
                             </a>
 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_authors.html">
-                                <span data-feather="listagem" class="align-text-bottom"></span>
+                                <span data-feather="autores" class="align-text-bottom"></span>
                                 Autores
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_publishers.html">
-                                <span data-feather="leitores" class="align-text-bottom"></span>
+                                <span data-feather="editoras" class="align-text-bottom"></span>
                                 Editoras
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_costumers.html">
-                                <span name="name" class="align-text-bottom"></span>
-                                Leitores
+                                <span data-feather="Usuario" class="align-text-bottom"></span>
+                                Usuarios
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_employees.html">
-                                <span name="name" class="align-text-bottom"></span>
+                                <span data-feather="funcionários" class="align-text-bottom"></span>
                                 Funcionário(a)
                             </a>
                         </li>
@@ -140,9 +137,6 @@
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                         <span>Opções</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle" class="align-text-bottom"></span>
-                        </a>
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
@@ -167,17 +161,17 @@
 
                     <body class="bg-body-tertiary">
 
-                        <div class="container">
+                        <div class="container ">
                             <main>
-                                <div class="py-5 text-center">
+                                <div class="py-5 ml-2 text-center">
                                     <h2>Cadastro de Livros</h2>
                                 </div>
 
-                                <div class="row g-5">
+                                <div class="row g-5 px-5 mx-3 ">
 
-                                    <div class="col-md-7 col-lg-12">
+                                    <div class="col-md-7 col-lg-10">
                                         <h5 class="mb-3">Informações revelantes sobre o livro</h5>
-                                        <form class="needs-validation" novalidate="">
+                                        <form class="needs-validation" action="../../../pdo/registers/register_books.php" method="post" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="titule_book" class="form-label">Titulo</label>
@@ -241,7 +235,7 @@
                                             <hr class="my-4">
 
                                             <button class="w-20 btn btn-primary btn-ls"
-                                                type="submit">Confirmação</button>
+                                                type="submit">Enviar</button>
                                         </form>
                                     </div>
                                 </div>
@@ -249,9 +243,6 @@
 
                             <footer class="text-muted py-5">
                                 <div class="container">
-                                    <p class="float-end mb-1">
-                                        <a href="../registers/register_costumers.html">Back to top</a>
-                                    </p>
                                     <p class="mb-1">© 2023 Biblioteca Pedbot</p>
                                 </div>
                             </footer>
