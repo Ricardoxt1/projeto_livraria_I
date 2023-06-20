@@ -79,12 +79,6 @@
       data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="navbar-nav">
-      <div class="nav-item text-nowrap text-light">
-        <a class="nav-link px-3" href="#">Voltar ao menu</a>
-      </div>
-    </div>
   </header>
 
   <div class="container-fluid">
@@ -93,32 +87,36 @@
         <div class="position-sticky pt-3 sidebar-sticky">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link" href="../controllers/cadastrar.html">
+              <h6
+                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                <span>MENU</span>
+              </h6>
+              <a class="nav-link" href="../controllers/registers/register_costumers.html">
                 <span data-feather="listagem" class="align-text-bottom"></span>
                 Cadastro
               </a>
 
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../controllers/listagem.html">
+              <a class="nav-link" href="../controllers/list/list_users.html">
                 <span data-feather="listagem" class="align-text-bottom"></span>
                 Listagem de Usuarios
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../controllers/listagem.html">
+              <a class="nav-link" href="../controllers/list/list_books.html">
                 <span data-feather="listagem" class="align-text-bottom"></span>
                 Listagem de livros
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="../controllers/list/list_authors.html">
                 <span data-feather="leitores" class="align-text-bottom"></span>
                 Listagem de autores
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pdo/registers/register_rentals.php">
+              <a class="nav-link" href="../controllers/registers/register_rental.html">
                 <span name="name" class="align-text-bottom"></span>
                 Alugar livro
               </a>
@@ -261,6 +259,14 @@
               </tr>
             </tbody>
           </table>
+          <footer class="text-muted py-5">
+            <div class="container">
+              <p class="float-end mb-1">
+                <a href="../../front/dashboard/menu.html">Back to top</a>
+              </p>
+              <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+            </div>
+          </footer>
         </div>
       </main>
     </div>
