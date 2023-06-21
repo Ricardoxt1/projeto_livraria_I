@@ -75,7 +75,7 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon">####</span>
         </button>
 
         <div class="navbar-nav">
@@ -103,9 +103,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_books.html">
-                                <span data-feather="Livros" class="align-text-bottom"></span>
-                                Livros
+                            <a class="nav-link" href="../../controllers/registers/register_authors.html">
+                                <span data-feather="Autores" class="align-text-bottom"></span>
+                                Autores
                             </a>
                         </li>
                         <li class="nav-item">
@@ -115,9 +115,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_authors.html">
-                                <span data-feather="Autores" class="align-text-bottom"></span>
-                                Autores
+                            <a class="nav-link" href="../../controllers/registers/register_books.html">
+                                <span data-feather="Livros" class="align-text-bottom"></span>
+                                Livros
                             </a>
                         </li>
 
@@ -126,6 +126,12 @@
                             <span>Opções</span>
                         </h6>
                         <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../controllers/registers/register_rentals.html">
+                                    <span name="name" class="align-text-bottom"></span>
+                                    Alugar livro
+                                </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../list/list_users.html">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
@@ -166,7 +172,7 @@
                                                 <div class="col-sm-7">
                                                     <label for="nome_employees" class="form-label">Nome completo</label>
                                                     <input type="text" class="form-control" name="name"
-                                                        id="nome_employees" placeholder="fulano da silva " value=""
+                                                        id="nome_employees" placeholder="Fulano da Silva " value=""
                                                         required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o nome do funcionário(a).
@@ -214,8 +220,7 @@
 
                                             <hr class="my-4">
 
-                                            <button class="w-20 btn btn-primary btn-ls"
-                                                type="submit">Enviar</button>
+                                            <button class="w-20 btn btn-primary btn-ls" type="submit">Enviar</button>
                                         </form>
                                     </div>
                                 </div>
