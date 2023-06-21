@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,9 +75,7 @@
 <body>
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">####</span>
         </button>
 
@@ -91,8 +92,7 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li>
-                            <h6
-                                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
                             </h6>
                         </li>
@@ -121,8 +121,7 @@
                             </a>
                         </li>
 
-                        <h6
-                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                             <span>Opções</span>
                         </h6>
                         <ul class="nav flex-column mb-2">
@@ -133,13 +132,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../list/list_users.html">
+                                <a class="nav-link" href="../list/list_users.php">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
                                     Listagem
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../edit/edit_users.html">
+                                <a class="nav-link" href="../edit/edit_users.php">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
                                     Editar itens
                                 </a>
@@ -150,8 +149,7 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                     <body class="bg-body-tertiary">
 
@@ -160,20 +158,21 @@
                                 <div class="py-5 text-center">
                                     <h2>Cadastro de Funcionário(a)</h2>
                                 </div>
-
+                                <?php
+                                if (isset($_SESSION['msg'])) {
+                                    echo $_SESSION['msg'];
+                                    unset($_SESSION['msg']);
+                                }
+                                ?>
                                 <div class="row g-5">
 
                                     <div class="col-md-7 col-lg-12">
                                         <h4 class="mb-3">Registro de dados</h4>
-                                        <form class="needs-validation"
-                                            action="../../../pdo/registers/register_employees.php" method="post"
-                                            novalidate="">
+                                        <form class="needs-validation" action="../../../pdo/registers/register_employees.php" method="post" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="nome_employees" class="form-label">Nome completo</label>
-                                                    <input type="text" class="form-control" name="name"
-                                                        id="nome_employees" placeholder="Fulano da Silva " value=""
-                                                        required="">
+                                                    <input type="text" class="form-control" name="name" id="nome_employees" placeholder="Fulano da Silva " value="" required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o nome do funcionário(a).
                                                     </div>
@@ -181,38 +180,32 @@
 
                                                 <div class="col-sm-5">
                                                     <label for="pis_employees" class="form-label">PIS</label>
-                                                    <input type="number" class="form-control" name="pis"
-                                                        id="pis_employees" placeholder="123.45678.91-0" value=""
-                                                        required="">
+                                                    <input type="number" class="form-control" name="pis" id="pis_employees" placeholder="123.45678.91-0" value="" required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o seu telefone.
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <label for="cargo_employees" class="form-lab  el">Cargo
-                                                        <input type="text" class="form-control" name="office"
-                                                            id="cargo_employees" placeholder="Vendedor">
+                                                        <input type="text" class="form-control" name="office" id="cargo_employees" placeholder="Vendedor">
                                                         <div class="invalid-feedback">
                                                             Por favor, digite o cargo do funcionário(a).
                                                         </div>
                                                 </div>
 
                                                 <div class="col-sm-4">
-                                                    <label for="departamento_employees"
-                                                        class="form-lab  el">Departamento
-                                                        <input type="text" class="form-control" name="departament"
-                                                            id="departamento_employees" placeholder="Vendas">
+                                                    <label for="departamento_employees" class="form-lab  el">Departamento
+                                                        <input type="text" class="form-control" name="departament" id="departamento_employees" placeholder="Vendas">
                                                         <div class="invalid-feedback">
                                                             Por favor, digite o departamento do funcionário(a).
                                                         </div>
                                                 </div>
 
                                                 <div class="col-sm-4">
-                                                    <label for="empresa_employees" class="form-lab  el">Empresa
-                                                        <input type="text" class="form-control" name="libraries"
-                                                            id="empresa_employees" placeholder="Livraria São Miguel">
+                                                    <label for="empresa_employees" class="form-lab  el">Id da empresa
+                                                        <input type="number" class="form-control" name="library_id" id="empresa_employees" min="1" placeholder="#1">
                                                         <div class="invalid-feedback">
-                                                            Por favor, digite o cargo do funcionário(a).
+                                                            Por favor, digite o id da empresa.
                                                         </div>
                                                 </div>
 
