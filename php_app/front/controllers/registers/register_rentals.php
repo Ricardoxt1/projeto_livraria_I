@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="pt">
 
@@ -75,9 +78,7 @@
 
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -94,8 +95,7 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <h6
-                                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
                             </h6>
 
@@ -134,8 +134,7 @@
 
                     </ul>
 
-                    <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                         <span>Opções</span>
                         <a class="link-secondary" href="#" aria-label="Add a new report">
                             <span data-feather="plus-circle" class="align-text-bottom"></span>
@@ -143,13 +142,13 @@
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_users.html">
+                            <a class="nav-link" href="../list/list_users.php">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
                                 Listagem
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../edit/edit_users.html">
+                            <a class="nav-link" href="../edit/edit_users.php">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
                                 Editar itens
                             </a>
@@ -159,8 +158,7 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                     <body class="bg-body-tertiary">
 
@@ -168,45 +166,47 @@
                             <main>
                                 <div class="py-5 text-center">
                                     <h2>Aluguel de livros</h2>
+                                    <div>
+                                        <?php
+                                        if (isset($_SESSION['msg'])) {
+                                            echo $_SESSION['msg'];
+                                            unset($_SESSION['msg']);
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
 
                                 <div class="row g-5">
 
                                     <div class="col-md-7 col-lg-12">
                                         <h4 class="mb-3">Registro sobre o aluguel</h4>
-                                        <form class="needs-validation"
-                                            action="../../../pdo/registers/register_costumers.php" method="post"
-                                            novalidate="">
+                                        <form class="needs-validation" action="../../../pdo/registers/register_rentals.php" method="post" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-2">
                                                     <label for="id_costumer" class="form-label">Id do consumidor</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_costumer">
+                                                    <input type="number" class="form-control" name="id_costumers_rental" id="id_costumer">
                                                     <div class="invalid-feedback">
                                                         É necessario acrescentar o id do consumidor
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <label for="id_book" class="form-label">Id do livro</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_book">
+                                                    <input type="number" class="form-control" name="id_book_rental" id="id_book">
                                                     <div class="invalid-feedback">
                                                         É necessario acrescentar o id do livro
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <label for="id_employees" class="form-label">Id do vendedor</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_employees">
+                                                    <input type="number" class="form-control" name="id_employees_rental" id="id_employees">
                                                     <div class="invalid-feedback">
-                                                        É necessario acrescentar o id do consumidor
+                                                        É necessario acrescentar o id do funcionario
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label for="rental" class="form-label">Data do
                                                         aluguel</label>
-                                                    <input type="date" class="form-control" name="rental" id="rental"
-                                                        value="?php> echo date('Y-m-d',strtotime($pdo['rental']));?>">
+                                                    <input type="date" class="form-control" name="rental" id="rental" value="?php> echo date('Y-m-d',strtotime($pdo['rental']));?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar a data do aluguel.
                                                     </div>
@@ -214,9 +214,7 @@
                                                 <div class="col-sm-3">
                                                     <label for="delivery" class="form-label">Data previsão de
                                                         devolução</label>
-                                                    <input type="date" class="form-control" name="delivery"
-                                                        id="delivery"
-                                                        value="?php> echo date('Y-m-d',strtotime($pdo['delivery']));?>">
+                                                    <input type="date" class="form-control" name="delivery" id="delivery" value="?php> echo date('Y-m-d',strtotime($pdo['delivery']));?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar a data da previsão de devolução.
                                                     </div>
@@ -250,12 +248,8 @@
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
 </body>
 
