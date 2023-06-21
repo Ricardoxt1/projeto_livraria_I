@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="pt">
 
@@ -75,9 +78,7 @@
 
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -94,8 +95,7 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li>
-                            <h6
-                                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
                             </h6>
 
@@ -128,8 +128,7 @@
 
                     </ul>
 
-                    <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                         <span>Opções</span>
                     </h6>
                     <ul class="nav flex-column mb-2">
@@ -140,13 +139,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_users.html">
+                            <a class="nav-link" href="../list/list_users.php">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
                                 Listagem
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../edit/edit_users.html">
+                            <a class="nav-link" href="../edit/edit_users.php">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
                                 Editar itens
                             </a>
@@ -156,8 +155,7 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                     <body class="bg-body-tertiary">
 
@@ -166,30 +164,33 @@
                                 <div class="py-5 ml-2 text-center">
                                     <h2>Cadastro de Livros</h2>
                                 </div>
+                                <div>
+                                    <?php
+                                    if (isset($_SESSION['msg'])) {
+                                        echo $_SESSION['msg'];
+                                        unset($_SESSION['msg']);
+                                    }
 
+                                    ?>
+                                </div>
                                 <div class="row g-5 px-5 mx-3 ">
 
                                     <div class="col-md-7 col-lg-10">
                                         <h5 class="mb-3">Informações revelantes sobre o livro</h5>
-                                        <form class="needs-validation"
-                                            action="../../../pdo/registers/register_books.php" method="post"
-                                            novalidate="">
+                                        <form class="needs-validation" action="../../../pdo/registers/register_books.php" method="post" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="titule_book" class="form-label">Titulo</label>
-                                                    <input type="text" class="form-control" name="titule"
-                                                        id="titule_book" placeholder="A bela e a fera " value=""
-                                                        required="">
-                                                    <div class="invalid-feedback">
+                                                    <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera " value="" required="">
+                                                    <!-- <div class="invalid-feedback">
                                                         É necessario digitar o titulo do livro.
-                                                    </div>
+                                                    </div> -->
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <label for="paginas_book" class="form-label">Número de
                                                         páginas</label>
-                                                    <input type="number" class="form-control" name="page"
-                                                        id="paginas_book" placeholder="123" value="" required="">
+                                                    <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="" required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar quantidade de páginas do livro.
                                                     </div>
@@ -197,17 +198,14 @@
                                                 <div class="col-sm-3">
                                                     <label for="realese_book" class="form-label">Data de
                                                         lançamento</label>
-                                                    <input type="number" min="1900" max="2099" step="1"
-                                                        class="form-control" name="realese_date" id="realese_book"
-                                                        placeholder="1999" value="" required="">
+                                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="" required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o ano de lançamento do livro.
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <label for="id_author" class="form-label">Id do autor </label>
-                                                    <input type="number" class="form-control" name="id_autor_book"
-                                                        id="id_author" placeholder="1">
+                                                    <input type="number" class="form-control" name="id_autor_book" id="id_author" placeholder="1">
                                                     <div class="invalid-feedback">
                                                         Por favor, entre com um id de autor existente.
                                                     </div>
@@ -215,8 +213,7 @@
                                                 <div class="col-sm-2">
                                                     <label for="id_libraries" class="form-label">Id da
                                                         biblioteca</label>
-                                                    <input type="number" class="form-control" name="id_libraries_book"
-                                                        id="id_libraries" placeholder="1">
+                                                    <input type="number" class="form-control" name="id_libraries_book" id="id_libraries" placeholder="1">
                                                     <div class="invalid-feedback">
                                                         Por favor, entre com um id de biblioteca existente.
                                                     </div>
@@ -225,8 +222,7 @@
                                                 <div class="col-sm-2">
                                                     <label for="id_publishers" class="form-label">Id da
                                                         editora</label>
-                                                    <input type="number" class="form-control" name="id_publishers_book"
-                                                        id="id_publishers" placeholder="1">
+                                                    <input type="number" class="form-control" name="id_publishers_book" id="id_publishers" placeholder="1">
                                                     <div class="invalid-feedback">
                                                         Por favor, entre com um id de biblioteca existente.
                                                     </div>
@@ -258,12 +254,8 @@
 
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
 </body>
 
