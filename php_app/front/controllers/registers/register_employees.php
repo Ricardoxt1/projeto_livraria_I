@@ -80,7 +80,7 @@
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.html">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -97,25 +97,25 @@
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_costumers.html">
+                            <a class="nav-link" href="../../controllers/registers/register_costumers.php">
                                 <span data-feather="usuario" class="align-text-bottom"></span>
                                 Usuarios
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_authors.html">
+                            <a class="nav-link" href="../../controllers/registers/register_authors.php">
                                 <span data-feather="Autores" class="align-text-bottom"></span>
                                 Autores
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_publishers.html">
+                            <a class="nav-link" href="../../controllers/registers/register_publishers.php">
                                 <span data-feather="Editoras" class="align-text-bottom"></span>
                                 Editoras
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_books.html">
+                            <a class="nav-link" href="../../controllers/registers/register_books.php">
                                 <span data-feather="Livros" class="align-text-bottom"></span>
                                 Livros
                             </a>
@@ -127,7 +127,7 @@
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="../../controllers/registers/register_rentals.html">
+                                <a class="nav-link" href="../../controllers/registers/register_rentals.php">
                                     <span name="name" class="align-text-bottom"></span>
                                     Alugar livro
                                 </a>

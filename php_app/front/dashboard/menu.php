@@ -76,7 +76,7 @@
   <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   </header>
@@ -93,14 +93,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../controllers/registers/register_costumers.html">
+              <a class="nav-link" href="../controllers/registers/register_costumers.php">
                 <span data-feather="listagem" class="align-text-bottom"></span>
                 Cadastro
               </a>
             </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../controllers/registers/register_rentals.html">
+              <a class="nav-link" href="../controllers/registers/register_rentals.php">
                 <span name="name" class="align-text-bottom"></span>
                 Alugar livro
               </a>
@@ -112,7 +112,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../controllers/registers/register_publishers.html">
+              <a class="nav-link" href="../../controllers/registers/register_publishers.php">
                 <span data-feather="leitores" class="align-text-bottom"></span>
                 Listagem das Editoras
               </a>
@@ -270,7 +270,7 @@
           <footer class="text-muted py-5">
             <div class="container">
               <p class="float-end mb-1">
-                <a href="../../front/dashboard/menu.html">Back to top</a>
+                <a href="../../front/dashboard/menu.php">Back to top</a>
               </p>
               <p class="mb-1">© 2023 Biblioteca Pedbot</p>
             </div>

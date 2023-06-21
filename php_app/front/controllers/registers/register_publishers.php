@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de autores</title>
+    <title>Cadastro de Editoras</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
@@ -64,9 +64,9 @@
         }
     </style>
 
-
     <!-- Custom styles for this template -->
     <link href="../dashboard/dashboard.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -77,10 +77,9 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.html">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -97,41 +96,40 @@
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_costumers.html">
+                            <a class="nav-link" href="../../controllers/registers/register_costumers.php">
                                 <span data-feather="usuario" class="align-text-bottom"></span>
                                 Usuarios
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_books.html">
+                            <a class="nav-link" href="../../controllers/registers/register_authors.php">
+                                <span data-feather="autores" class="align-text-bottom"></span>
+                                Autores
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../controllers/registers/register_books.php">
                                 <span data-feather="Livros" class="align-text-bottom"></span>
                                 Livros
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_publishers.html">
-                                <span data-feather="Editoras" class="align-text-bottom"></span>
-                                Editoras
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_employees.html">
+                            <a class="nav-link" href="../../controllers/registers/register_employees.php">
                                 <span data-feather="Funcionário(a)" class="align-text-bottom"></span>
                                 Funcionário(a)
                             </a>
                         </li>
-
                         <h6
                             class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                             <span>Opções</span>
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="../../controllers/registers/register_rentals.html">
-                                  <span name="name" class="align-text-bottom"></span>
-                                  Alugar livro
+                                <a class="nav-link" href="../../controllers/registers/register_rentals.php">
+                                    <span name="name" class="align-text-bottom"></span>
+                                    Alugar livro
                                 </a>
-                              </li>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="../list/list_users.html">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
@@ -158,21 +156,22 @@
                         <div class="container">
                             <main>
                                 <div class="py-5 ml-2">
-                                    <h2>Cadastro de Autores</h2>
+                                    <h2>Cadastro de Editoras</h2>
                                     <div class="row g-5 pt-5">
                                         <div class="col-md-7 col-lg-10">
-                                            <h5 class="mb-3">Informações revelantes sobre o autor</h5>
+                                            <h5 class="mb-3">Informações revelantes sobre a editora</h5>
                                         </div>
                                     </div>
-                                    <form class="needs-validation" action="../../../pdo/registers/register_authors.php"
-                                        method="post" novalidate="">
+                                    <form class="needs-validation"
+                                        action="../../../pdo/registers/register_publishers.php" method="post"
+                                        novalidate="">
                                         <div class="row g-3">
                                             <div class="col-sm-7">
-                                                <label for="name_author" class="form-label">Nome do autor</label>
-                                                <input type="text" class="form-control" name="name" id="name_author"
-                                                    placeholder="fulano da silva" value="" required="">
+                                                <label for="name_publisher" class="form-label">Nome da editora</label>
+                                                <input type="text" class="form-control" name="name" id="name_publisher"
+                                                    placeholder="Editora São Miguel" value="" required="">
                                                 <div class="invalid-feedback">
-                                                    É necessario digitar o nome do autor.
+                                                    É necessario digitar o nome da editora.
                                                 </div>
                                                 <hr class="my-4">
 
@@ -189,14 +188,15 @@
                                 </footer>
                             </main>
                         </div>
-                        
+
                     </body>
-                    
+
                 </div>
             </main>
-            
         </div>
     </div>
+
+
 </body>
 
 </html>

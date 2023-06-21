@@ -7,7 +7,7 @@
     <meta name="description" content="Um projeto voltado ao sistema de gestão para biblioteca">
     <meta name="Ricardo" content="Sistema de biblioteca">
     <meta name="generator" content="Ricardo">
-    <title>Aluguel de livros</title>
+    <title>Cadastro de livros</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
@@ -83,7 +83,7 @@
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.html">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -93,7 +93,7 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
+                        <li>
                             <h6
                                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
@@ -101,27 +101,27 @@
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_books.html">
-                                <span data-feather="listagem" class="align-text-bottom"></span>
-                                Livros
+                            <a class="nav-link" href="../../controllers/registers/register_costumers.php">
+                                <span data-feather="usuarios" class="align-text-bottom"></span>
+                                Usuarios
                             </a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_authors.html">
-                                <span data-feather="listagem" class="align-text-bottom"></span>
+                            <a class="nav-link" href="../../controllers/registers/register_authors.php">
+                                <span data-feather="autores" class="align-text-bottom"></span>
                                 Autores
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_publishers.html">
-                                <span data-feather="Editoras" class="align-text-bottom"></span>
+                            <a class="nav-link" href="../../controllers/registers/register_publishers.php">
+                                <span data-feather="editoras" class="align-text-bottom"></span>
                                 Editoras
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_employees.html">
-                                <span name="name" data-feather="Funcionário(a)" class="align-text-bottom"></span>
+                            <a class="nav-link" href="../../controllers/registers/register_employees.php">
+                                <span data-feather="funcionários" class="align-text-bottom"></span>
                                 Funcionário(a)
                             </a>
                         </li>
@@ -131,11 +131,14 @@
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                         <span>Opções</span>
-                        <a class="link-secondary" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle" class="align-text-bottom"></span>
-                        </a>
                     </h6>
                     <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../controllers/registers/register_rentals.php">
+                                <span name="name" class="align-text-bottom"></span>
+                                Alugar livro
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../list/list_users.html">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
@@ -158,65 +161,76 @@
 
                     <body class="bg-body-tertiary">
 
-                        <div class="container">
+                        <div class="container ">
                             <main>
-                                <div class="py-5 text-center">
-                                    <h2>Aluguel de livros</h2>
+                                <div class="py-5 ml-2 text-center">
+                                    <h2>Cadastro de Livros</h2>
                                 </div>
 
-                                <div class="row g-5">
+                                <div class="row g-5 px-5 mx-3 ">
 
-                                    <div class="col-md-7 col-lg-12">
-                                        <h4 class="mb-3">Registro sobre o aluguel</h4>
+                                    <div class="col-md-7 col-lg-10">
+                                        <h5 class="mb-3">Informações revelantes sobre o livro</h5>
                                         <form class="needs-validation"
-                                            action="../../../pdo/registers/register_costumers.php" method="post"
+                                            action="../../../pdo/registers/register_books.php" method="post"
                                             novalidate="">
                                             <div class="row g-3">
-                                                <div class="col-sm-2">
-                                                    <label for="id_costumer" class="form-label">Id do consumidor</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_costumer">
+                                                <div class="col-sm-7">
+                                                    <label for="titule_book" class="form-label">Titulo</label>
+                                                    <input type="text" class="form-control" name="titule"
+                                                        id="titule_book" placeholder="A bela e a fera " value=""
+                                                        required="">
                                                     <div class="invalid-feedback">
-                                                        É necessario acrescentar o id do consumidor
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label for="id_book" class="form-label">Id do livro</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_book">
-                                                    <div class="invalid-feedback">
-                                                        É necessario acrescentar o id do livro
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label for="id_employees" class="form-label">Id do vendedor</label>
-                                                    <input type="number" class="form-control" name="id_costumers_rental"
-                                                        id="id_employees">
-                                                    <div class="invalid-feedback">
-                                                        É necessario acrescentar o id do consumidor
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label for="rental" class="form-label">Data do
-                                                        aluguel</label>
-                                                    <input type="date" class="form-control" name="rental" id="rental"
-                                                        value="?php> echo date('Y-m-d',strtotime($pdo['rental']));?>">
-                                                    <div class="invalid-feedback">
-                                                        É necessario digitar a data do aluguel.
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label for="delivery" class="form-label">Data previsão de
-                                                        devolução</label>
-                                                    <input type="date" class="form-control" name="delivery"
-                                                        id="delivery"
-                                                        value="?php> echo date('Y-m-d',strtotime($pdo['delivery']));?>">
-                                                    <div class="invalid-feedback">
-                                                        É necessario digitar a data da previsão de devolução.
+                                                        É necessario digitar o titulo do livro.
                                                     </div>
                                                 </div>
 
+                                                <div class="col-sm-2">
+                                                    <label for="paginas_book" class="form-label">Número de
+                                                        páginas</label>
+                                                    <input type="number" class="form-control" name="page"
+                                                        id="paginas_book" placeholder="123" value="" required="">
+                                                    <div class="invalid-feedback">
+                                                        É necessario digitar quantidade de páginas do livro.
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <label for="realese_book" class="form-label">Data de
+                                                        lançamento</label>
+                                                    <input type="number" min="1900" max="2099" step="1"
+                                                        class="form-control" name="realese_date" id="realese_book"
+                                                        placeholder="1999" value="" required="">
+                                                    <div class="invalid-feedback">
+                                                        É necessario digitar o ano de lançamento do livro.
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <label for="id_author" class="form-label">Id do autor </label>
+                                                    <input type="number" class="form-control" name="id_autor_book"
+                                                        id="id_author" placeholder="1">
+                                                    <div class="invalid-feedback">
+                                                        Por favor, entre com um id de autor existente.
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <label for="id_libraries" class="form-label">Id da
+                                                        biblioteca</label>
+                                                    <input type="number" class="form-control" name="id_libraries_book"
+                                                        id="id_libraries" placeholder="1">
+                                                    <div class="invalid-feedback">
+                                                        Por favor, entre com um id de biblioteca existente.
+                                                    </div>
+                                                </div>
 
+                                                <div class="col-sm-2">
+                                                    <label for="id_publishers" class="form-label">Id da
+                                                        editora</label>
+                                                    <input type="number" class="form-control" name="id_publishers_book"
+                                                        id="id_publishers" placeholder="1">
+                                                    <div class="invalid-feedback">
+                                                        Por favor, entre com um id de biblioteca existente.
+                                                    </div>
+                                                </div>
 
                                             </div>
 
