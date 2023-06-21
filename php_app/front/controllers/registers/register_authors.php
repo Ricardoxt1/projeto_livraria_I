@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,9 +75,7 @@
 <body>
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -91,8 +92,7 @@
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li>
-                            <h6
-                                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                                 <span>Cadastro</span>
                             </h6>
                         </li>
@@ -121,25 +121,24 @@
                             </a>
                         </li>
 
-                        <h6
-                            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
                             <span>Opções</span>
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
                                 <a class="nav-link" href="../../controllers/registers/register_rentals.php">
-                                  <span name="name" class="align-text-bottom"></span>
-                                  Alugar livro
+                                    <span name="name" class="align-text-bottom"></span>
+                                    Alugar livro
                                 </a>
-                              </li>
+                            </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../list/list_users.html">
+                                <a class="nav-link" href="../list/list_users.php">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
                                     Listagem
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../edit/edit_users.html">
+                                <a class="nav-link" href="../edit/edit_users.php">
                                     <span data-feather="file-text" class="align-text-bottom"></span>
                                     Editar itens
                                 </a>
@@ -150,8 +149,7 @@
             </nav>
 
             <main class="col-9 ms-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
                     <body class="bg-body-tertiary">
 
@@ -159,25 +157,30 @@
                             <main>
                                 <div class="py-5 ml-2">
                                     <h2>Cadastro de Autores</h2>
+                                    <div>
+                                        <?php
+                                        if (isset($_SESSION['msg'])) {
+                                            echo $_SESSION['msg'];
+                                            unset($_SESSION['msg']);
+                                        }
+                                        ?>
+                                    </div>
                                     <div class="row g-5 pt-5">
                                         <div class="col-md-7 col-lg-10">
                                             <h5 class="mb-3">Informações revelantes sobre o autor</h5>
                                         </div>
                                     </div>
-                                    <form class="needs-validation" action="../../../pdo/registers/register_authors.php"
-                                        method="post" novalidate="">
+                                    <form class="needs-validation" action="../../../pdo/registers/register_authors.php" method="post" novalidate="">
                                         <div class="row g-3">
                                             <div class="col-sm-7">
                                                 <label for="name_author" class="form-label">Nome do autor</label>
-                                                <input type="text" class="form-control" name="name" id="name_author"
-                                                    placeholder="fulano da silva" value="" required="">
+                                                <input type="text" class="form-control" name="name" id="name_author" placeholder="fulano da silva" value="" required="">
                                                 <div class="invalid-feedback">
                                                     É necessario digitar o nome do autor.
                                                 </div>
                                                 <hr class="my-4">
 
-                                                <button class="w-20 btn btn-primary btn-ls"
-                                                    type="submit">Enviar</button>
+                                                <button class="w-20 btn btn-primary btn-ls" type="submit">Enviar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -189,12 +192,12 @@
                                 </footer>
                             </main>
                         </div>
-                        
+
                     </body>
-                    
+
                 </div>
             </main>
-            
+
         </div>
     </div>
 </body>
