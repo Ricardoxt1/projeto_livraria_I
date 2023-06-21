@@ -120,12 +120,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_costumers.html">
-                                <span name="name" data-feather="Usuarios" class="align-text-bottom"></span>
-                                Usuarios
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_employees.html">
                                 <span name="name" data-feather="Funcionário(a)" class="align-text-bottom"></span>
                                 Funcionário(a)
@@ -142,6 +136,12 @@
                         </a>
                     </h6>
                     <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../controllers/registers/register_rentals.html">
+                                <span name="name" class="align-text-bottom"></span>
+                                Alugar livro
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../list/list_users.html">
                                 <span data-feather="file-text" class="align-text-bottom"></span>
@@ -174,7 +174,9 @@
 
                                     <div class="col-md-7 col-lg-12">
                                         <h4 class="mb-3">Registro dados pessoais</h4>
-                                        <form class="needs-validation" action="../../../pdo/registers/register_costumers.php" method="post" novalidate="">
+                                        <form class="needs-validation"
+                                            action="../../../pdo/registers/register_costumers.php" method="post"
+                                            novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="nome_costumer" class="form-label">Nome completo</label>
@@ -228,8 +230,7 @@
 
                                             <hr class="my-4">
 
-                                            <button class="w-20 btn btn-primary btn-ls"
-                                                type="submit">Enviar</button>
+                                            <button class="w-20 btn btn-primary btn-ls" type="submit">Enviar</button>
                                         </form>
                                     </div>
                                 </div>
