@@ -14,7 +14,7 @@ session_start();
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
 
-    <link href="../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -78,7 +78,7 @@ session_start();
 
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler position-center d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -102,27 +102,27 @@ session_start();
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_costumers.php">
-                                <span data-feather="usuarios" class="align-text-bottom"></span>
-                                Usuarios
+                                <span data-feather="register_costumers" class="align-text-bottom">Usuarios</span>
+
                             </a>
 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_authors.php">
-                                <span data-feather="autores" class="align-text-bottom"></span>
-                                Autores
+                                <span data-feather="register_authors" class="align-text-bottom">Autores</span>
+
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_publishers.php">
-                                <span data-feather="editoras" class="align-text-bottom"></span>
-                                Editoras
+                                <span data-feather="register_publishers" class="align-text-bottom">Editoras</span>
+
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_employees.php">
-                                <span data-feather="funcionários" class="align-text-bottom"></span>
-                                Funcionário(a)
+                                <span data-feather="register_employees" class="align-text-bottom">Funcionário(a)</span>
+
                             </a>
                         </li>
 
@@ -134,20 +134,14 @@ session_start();
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
                             <a class="nav-link" href="../../controllers/registers/register_rentals.php">
-                                <span name="name" class="align-text-bottom"></span>
-                                Alugar livro
+                                <span name="rentals" class="align-text-bottom">Alugar livro</span>
+
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_users.php">
-                                <span data-feather="file-text" class="align-text-bottom"></span>
-                                Listagem
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../edit/edit_users.php">
-                                <span data-feather="file-text" class="align-text-bottom"></span>
-                                Editar itens
+                            <a class="nav-link" href="../list/list_costumers.php">
+                                <span data-feather="list" class="align-text-bottom">Listagem</span>
+
                             </a>
                         </li>
                     </ul>
@@ -211,15 +205,6 @@ session_start();
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <label for="id_libraries" class="form-label">Id da
-                                                        biblioteca</label>
-                                                    <input type="number" class="form-control" name="id_libraries_book" id="id_libraries" placeholder="1">
-                                                    <div class="invalid-feedback">
-                                                        Por favor, entre com um id de biblioteca existente.
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-2">
                                                     <label for="id_publishers" class="form-label">Id da
                                                         editora</label>
                                                     <input type="number" class="form-control" name="id_publishers_book" id="id_publishers" placeholder="1">
@@ -250,10 +235,7 @@ session_start();
             </main>
         </div>
     </div>
-
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
