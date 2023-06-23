@@ -91,7 +91,7 @@ $pdo = conectar();
 <body>
 
     <header>
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -116,7 +116,7 @@ $pdo = conectar();
     <main>
         <div class='album py-5 bg-light'>
             <div class='container'>
-                <div class='row row-cols-1 row-cols-md-5 g-5 offset-md-1 '>
+                <div class='row row-cols-1 row-cols-md-4 g-5 offset-md-1 '>
                     <?php
                     $query_books = "SELECT titule, page, realese_date, author_id, library_id, publisher_id FROM books ";
                     $result_books = $pdo->prepare($query_books);
@@ -131,15 +131,22 @@ $pdo = conectar();
                                             <rect width='100%' height='100%' fill='#55595c'></rect><text x='50%' y='50%' fill='#eceeef' dy='.3em'>Thumbnail</text>
                                         </svg>
         
-                                        <div class='card-body'>
+                                        <div class='card-body p-4 m-'>
                                             <p class='card-text'>Titulo: " . $row_book['titule'] . "</p>
                                             <p class='card-text'>Páginas: " . $row_book['page'] . "</p>
                                             <p class='card-text'>Lançamento: " . $row_book['realese_date'] . "</p>
                                             <p class='card-text'>Editora: " . $row_book['publisher_id'] . "</p>
                                             <div class='d-flex justify-content-between align-items-center'>
-                                                <div class='btn-group'>
-                                                    <button type='button' class='btn btn-sm btn-outline-secondary'>View</button>
-                                                    <button type='button' class='btn btn-sm btn-outline-secondary'>Edit</button>
+                                                <div class='btn-group m-1'>
+                                                    <a class='m-2' href='../edit/edit_books.php'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
+                                                                                        <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
+                                                                                        <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>
+                                                                                   </svg>
+                                                    </a>
+                                                    <a class='m-2' href='../delete/delete_books.php'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+                                                                                        <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z' />
+                                                                                        <path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z' /></svg>
+                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,7 +160,16 @@ $pdo = conectar();
                 </div>
             </div>
         </div>
-
+        <footer class="text-muted py-5">
+            <div class="container">
+                <p class="float-end mb-1">
+                    <a href="../list/list_books.php"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
+                            <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
+                        </svg></a>
+                </p>
+                <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+            </div>
+        </footer>
     </main>
     <script src="./Album example · Bootstrap v5.2_files/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
