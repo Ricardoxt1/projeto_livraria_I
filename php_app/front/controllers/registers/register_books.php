@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once('../../../config.php');
+$pdo = conectar();
 ?>
 <!doctype html>
 <html lang="pt">
@@ -166,25 +168,26 @@ session_start();
                                     }
 
                                     ?>
+
                                 </div>
                                 <div class="row g-5 px-5 mx-3 ">
 
-                                    <div class="col-md-7 col-lg-10">
+                                    <div class="col-md-7 col-lg-12">
                                         <h5 class="mb-3">Informações revelantes sobre o livro</h5>
-                                        <form class="needs-validation" action="../../../pdo/registers/register_books.php" method="post" novalidate="">
+                                        <form class="needs-validation" action="../../../pdo/registers/register_books.php" method="POST" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="titule_book" class="form-label">Titulo</label>
-                                                    <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera " value="" required="">
-                                                    <!-- <div class="invalid-feedback">
+                                                    <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera" value="" required>
+                                                    <div class="invalid-feedback">
                                                         É necessario digitar o titulo do livro.
-                                                    </div> -->
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <label for="paginas_book" class="form-label">Número de
                                                         páginas</label>
-                                                    <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="" required="">
+                                                    <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="" required>
                                                     <div class="invalid-feedback">
                                                         É necessario digitar quantidade de páginas do livro.
                                                     </div>
@@ -192,25 +195,77 @@ session_start();
                                                 <div class="col-sm-3">
                                                     <label for="realese_book" class="form-label">Data de
                                                         lançamento</label>
-                                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="" required="">
+                                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="" required>
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o ano de lançamento do livro.
                                                     </div>
                                                 </div>
+
                                                 <div class="col-sm-2">
-                                                    <label for="id_author" class="form-label">Id do autor </label>
-                                                    <input type="number" class="form-control" name="id_autor_book" id="id_author" placeholder="1">
-                                                    <div class="invalid-feedback">
-                                                        Por favor, entre com um id de autor existente.
-                                                    </div>
+
+                                                    <label for="floatingSelect">Selecionar o autor</label>
+                                                    <select class="form-select" id="floatingSelect" name="id_author" aria-label="Floating label select example">
+                                                        <option selected></option>
+
+                                                        <!-- Seleção para nomes dos autores section -->
+                                                        <?php
+                                                        $query_authors = "SELECT * FROM authors ";
+                                                        $result_authors = $pdo->prepare($query_authors);
+                                                        $result_authors->execute();
+
+                                                        if (($result_authors) and ($result_authors->rowCount() != 0)) {
+                                                            while ($row_authors = $result_authors->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_authors[id]'>$row_authors[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <label for="id_publishers" class="form-label">Id da
-                                                        editora</label>
-                                                    <input type="number" class="form-control" name="id_publishers_book" id="id_publishers" placeholder="1">
-                                                    <div class="invalid-feedback">
-                                                        Por favor, entre com um id de biblioteca existente.
-                                                    </div>
+
+                                                    <label for="floatingSelect">Selecionar o livraria</label>
+                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <?php
+                                                        $query_libraries = "SELECT * FROM libraries ";
+                                                        $result_libraries = $pdo->prepare($query_libraries);
+                                                        $result_libraries->execute();
+
+                                                        if (($result_libraries) and ($result_libraries->rowCount() != 0)) {
+                                                            while ($row_libraries = $result_libraries->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_libraries[id]'>$row_libraries[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-sm-2">
+
+                                                    <label for="floatingSelect">Selecionar a editora</label>
+                                                    <select class="form-select" id="floatingSelect" name="id_publishers" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <!-- Seleção para nomes das editoras section -->
+                                                        <?php
+                                                        $query_publishers = "SELECT * FROM publishers ";
+                                                        $result_publishers = $pdo->prepare($query_publishers);
+                                                        $result_publishers->execute();
+
+                                                        if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
+                                                            while ($row_publishers = $result_publishers->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_publishers[id]'>$row_publishers[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+
                                                 </div>
 
                                             </div>
@@ -222,23 +277,27 @@ session_start();
                                     </div>
                                 </div>
                             </main>
-
-                            <footer class="text-muted py-5">
-                                <div class="container">
-                                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
-                                </div>
-                            </footer>
                         </div>
-
                     </body>
                 </div>
             </main>
+            <footer class="text-muted py-5">
+                <div class="container">
+                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+                </div>
+            </footer>
+
+
         </div>
+
+
+
     </div>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
+    </div>
 </body>
 
 </html>

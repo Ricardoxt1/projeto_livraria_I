@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once('../../../config.php');
+$pdo = conectar();
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -174,33 +176,46 @@ session_start();
 
                                                 <div class="col-sm-5">
                                                     <label for="pis_employees" class="form-label">PIS</label>
-                                                    <input type="number" class="form-control" name="pis" id="pis_employees" placeholder="123.45678.91-0" value="" required="">
+                                                    <input type="number" class="form-control" min="1" name="pis" id="pis_employees" placeholder="123.45678.91-0" value="" required="">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o seu telefone.
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <label for="cargo_employees" class="form-lab  el">Cargo
-                                                        <input type="text" class="form-control" name="office" id="cargo_employees" placeholder="Vendedor">
-                                                        <div class="invalid-feedback">
-                                                            Por favor, digite o cargo do funcionário(a).
-                                                        </div>
+                                                    <label for="cargo_employees" class="form-lab  el">Cargo</label>
+                                                    <input type="text" class="form-control" name="office" id="cargo_employees" placeholder="Vendedor">
+                                                    <div class="invalid-feedback">
+                                                        Por favor, digite o cargo do funcionário(a).
+                                                    </div>
                                                 </div>
 
                                                 <div class="col-sm-4">
-                                                    <label for="departamento_employees" class="form-lab  el">Departamento
-                                                        <input type="text" class="form-control" name="departament" id="departamento_employees" placeholder="Vendas">
-                                                        <div class="invalid-feedback">
-                                                            Por favor, digite o departamento do funcionário(a).
-                                                        </div>
+                                                    <label for="departamento_employees" class="form-lab  el">Departamento</label>
+                                                    <input type="text" class="form-control" name="departament" id="departamento_employees" placeholder="Vendas">
+                                                    <div class="invalid-feedback">
+                                                        Por favor, digite o departamento do funcionário(a).
+                                                    </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
-                                                    <label for="empresa_employees" class="form-lab  el">Id da empresa
-                                                        <input type="number" class="form-control" name="library_id" id="empresa_employees" min="1" placeholder="#1" value="1">
-                                                        <div class="invalid-feedback">
-                                                            Por favor, digite o id da empresa.
-                                                        </div>
+                                                <div class="col-sm-3">
+                                                    <label for="departamento_employees" class="form-lab  el">Livraria</label>
+                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <?php
+                                                        $query_libraries = "SELECT * FROM libraries ";
+                                                        $result_libraries = $pdo->prepare($query_libraries);
+                                                        $result_libraries->execute();
+
+                                                        if (($result_libraries) and ($result_libraries->rowCount() != 0)) {
+                                                            while ($row_libraries = $result_libraries->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_libraries[id]'>$row_libraries[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+
                                                 </div>
 
                                             </div>
