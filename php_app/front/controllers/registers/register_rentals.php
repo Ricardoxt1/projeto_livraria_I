@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once('../../../config.php');
+$pdo = conectar();
 ?>
 <!doctype html>
 <html lang="pt">
@@ -81,14 +83,14 @@ session_start();
         <button class="navbar-toggler position-center d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
             </div>
         </div>
     </header>
-    
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -174,25 +176,79 @@ session_start();
                                         <form class="needs-validation" action="../../../pdo/registers/register_rentals.php" method="post" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-2">
-                                                    <label for="id_costumer" class="form-label">Id do consumidor</label>
+                                                    <label for="floatingSelect">Selecionar o consumidor</label>
+                                                    <select class="form-select" id="floatingSelect" name="id_costumers_rental" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <!-- Seleção para nomes dos consumidores section -->
+                                                        <?php
+                                                        $query_costumers = "SELECT * FROM costumers";
+                                                        $result_costumers = $pdo->prepare($query_costumers);
+                                                        $result_costumers->execute();
+
+                                                        if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
+                                                            while ($row_costumers = $result_costumers->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_costumers[id]'>$row_costumers[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+                                                    <!-- <label for="id_costumer" class="form-label">Id do consumidor</label>
                                                     <input type="number" class="form-control" name="id_costumers_rental" id="id_costumer">
                                                     <div class="invalid-feedback">
                                                         É necessario acrescentar o id do consumidor
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <label for="id_book" class="form-label">Id do livro</label>
+                                                    <label for="floatingSelect">Selecionar o livro</label>
+                                                    <select class="form-select" id="floatingSelect" name="id_book_rental" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <!-- Seleção para nomes dos livros section -->
+                                                        <?php
+                                                        $query_books = "SELECT * FROM books";
+                                                        $result_books = $pdo->prepare($query_books);
+                                                        $result_books->execute();
+
+                                                        if (($result_books) and ($result_books->rowCount() != 0)) {
+                                                            while ($row_books = $result_books->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_books[id]'>$row_books[titule]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+                                                    <!-- <label for="id_book" class="form-label">Id do livro</label>
                                                     <input type="number" class="form-control" name="id_book_rental" id="id_book">
                                                     <div class="invalid-feedback">
                                                         É necessario acrescentar o id do livro
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <label for="id_employees" class="form-label">Id do vendedor</label>
+                                                    <label for="floatingSelect">Selecionar o vendedor</label>
+                                                    <select class="form-select" id="floatingSelect" name="id_employees_rental" aria-label="Floating label select example">
+                                                        <option selected></option>
+                                                        <!-- Seleção para nomes dos livros section -->
+                                                        <?php
+                                                        $query_employees = "SELECT * FROM employees";
+                                                        $result_employees = $pdo->prepare($query_employees);
+                                                        $result_employees->execute();
+
+                                                        if (($result_employees) and ($result_employees->rowCount() != 0)) {
+                                                            while ($row_employees = $result_employees->fetch(PDO::FETCH_ASSOC)) {
+                                                                echo "<option value='$row_employees[id]'>$row_employees[name]</option>";
+                                                            }
+                                                        } else {
+                                                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                                                        };
+                                                        ?>
+                                                    </select>
+                                                    <!-- <label for="id_employees" class="form-label">Id do vendedor</label>
                                                     <input type="number" class="form-control" name="id_employees_rental" id="id_employees">
                                                     <div class="invalid-feedback">
                                                         É necessario acrescentar o id do funcionario
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <label for="rental" class="form-label">Data do
