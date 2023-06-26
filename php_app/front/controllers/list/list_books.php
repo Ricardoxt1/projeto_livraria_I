@@ -115,9 +115,10 @@ $pdo = conectar();
             <div class='container'>
                 <div class='row row-cols-1 row-cols-md-4 g-5 offset-md-1 '>
                     <?php
-                    $query_books = "SELECT titule, page, realese_date, author_id, library_id, publisher_id FROM books ";
+                    $query_books = "SELECT books.titule, books.page, books.realese_date, authors.name as authors_name, publishers.name as publishers_name FROM books INNER JOIN authors ON authors.id = books.author_id INNER JOIN publishers ON publishers.id = books.publisher_id";
                     $result_books = $pdo->prepare($query_books);
                     $result_books->execute();
+
 
                     if (($result_books) and ($result_books->rowCount() != 0)) {
                         while ($row_book = $result_books->fetch(PDO::FETCH_ASSOC)) {
@@ -132,7 +133,8 @@ $pdo = conectar();
                                             <p class='card-text'>Titulo: " . $row_book['titule'] . "</p>
                                             <p class='card-text'>Páginas: " . $row_book['page'] . "</p>
                                             <p class='card-text'>Lançamento: " . $row_book['realese_date'] . "</p>
-                                            <p class='card-text'>Editora: " . $row_book['publisher_id'] . "</p>
+                                            <p class='card-text'>Autor(a): " . $row_book["authors_name"] . "</p>
+                                            <p class='card-text'>Editora(a): " . $row_book["publishers_name"] . "</p>
                                             <div class='d-flex justify-content-between align-items-center'>
                                                 <div class='btn-group m-1'>
                                                     <a class='m-2' href='../edit/edit_books.php'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
