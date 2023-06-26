@@ -23,8 +23,9 @@ foreach ($resultado as $key) {
 }
 
 $id = 1;
-$stmtt = $pdo->prepare('SELECT authors.name, books.titule FROM books RIGHT JOIN authors ON authors.id = books.author_id WHERE authors.id = :author_id');
+$stmtt = $pdo->prepare('SELECT authors.name, books.titule publishers.name FROM books RIGHT JOIN authors ON authors.id = books.author_id WHERE authors.id = :author_id JOIN publishers on publishers.id = books.publisher_id WHERE publishers.id = :publisher_id');
 $stmtt->bindValue(':author_id', $id);
+$stmtt->bindValue(':publisher_id', $id);
 $stmtt->bindValue(':id', $id);
 $stmtt->execute();
 $resultadoo = $stmtt->fetchAll();
