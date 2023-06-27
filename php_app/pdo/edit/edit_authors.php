@@ -1,18 +1,19 @@
 <?php
-include_once('../../config.php');
-include_once('../../front/controllers/edit/edit_authors.php');
+session_start();
+include_once '../../config.php';
+include_once '../../front/controllers/edit/edit_authors.php';
+include_once '../../front/controllers/list/list_authors.php';
 $pdo = conectar();
+ob_start();
 
 try {
-
-
     $tabela = 'authors';
     $stmt = $pdo->prepare("UPDATE $tabela SET name = :name WHERE id = :id");
     $stmt->execute(array(
         ':id' => $dados['id'],
         ':name' => $dados['name'],
     ));
-
+    var_dump($dados['id']);
     $lastInsertId = $pdo->lastInsertId();
 
     if ($lastInsertId) {
