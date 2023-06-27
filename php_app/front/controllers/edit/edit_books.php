@@ -1,8 +1,24 @@
 <?php
 session_start();
 ob_start();
-include_once('../../../config.php');
+include_once '../../../config.php';
 $pdo = conectar();
+
+$id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
+
+$query_books_id = "SELECT * FROM books WHERE id = $id";
+$result_books_id = $pdo->prepare($query_books_id);
+$result_books_id->execute();
+
+
+if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
+    $row_books_id = $result_books_id->fetch(PDO::FETCH_ASSOC);
+} else {
+    $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não encontrado!</p>";
+    header("Location: /front/controllers/list/list_books.php");
+    exit;
+};
+
 ?>
 <!doctype html>
 <html lang="pt">
@@ -87,7 +103,7 @@ $pdo = conectar();
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../controllers/list/list_books.php">Voltar a listagem</a>
             </div>
         </div>
     </header>
@@ -99,32 +115,32 @@ $pdo = conectar();
                     <ul class="nav flex-column">
                         <li>
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                                <span>Cadastro</span>
+                                <span>Editar</span>
                             </h6>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_costumers.php">
-                                <span data-feather="register_costumers" class="align-text-bottom">Usuarios</span>
+                            <a class="nav-link" href="../../controllers/list/list_costumers.php">
+                                <span data-feather="list_costumers" class="align-text-bottom">Usuarios</span>
 
                             </a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_authors.php">
-                                <span data-feather="register_authors" class="align-text-bottom">Autores</span>
+                            <a class="nav-link" href="../../controllers/list/list_authors.php">
+                                <span data-feather="list_authors" class="align-text-bottom">Autores</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_publishers.php">
-                                <span data-feather="register_publishers" class="align-text-bottom">Editoras</span>
+                            <a class="nav-link" href="../../controllers/list/list_publishers.php">
+                                <span data-feather="list_publishers" class="align-text-bottom">Editoras</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_employees.php">
-                                <span data-feather="register_employees" class="align-text-bottom">Funcionário(a)</span>
+                            <a class="nav-link" href="../../controllers/list/list_employees.php">
+                                <span data-feather="list_employees" class="align-text-bottom">Funcionário(a)</span>
 
                             </a>
                         </li>
@@ -171,15 +187,76 @@ $pdo = conectar();
                                     ?>
 
                                 </div>
+                                <div>
+                                    <?php
+                                    if (!empty($dados['edit_books'])) {
+                                        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+                                        $empty_input = false;
+                                        $dados = array_map('trim', $dados);
+                                        if (in_array("", $dados)) {
+                                            $empty_input = true;
+                                            echo "<p class='mt-5' style='color: #f00;'>Necessario preencher todos os campos para edição!</p>";
+                                        }
+                                    }
+
+                                    if (isset($_POST['edit_books'])) {
+
+                                        // Valide os dados aqui, se necessário
+
+                                        $query_update = "UPDATE books SET 
+                                            titule = :titule,
+                                            page = :page,
+                                            realese_date = :realese_date,
+                                            author_id = :author_id,
+                                            library_id = :library_id,
+                                            publisher_id = :publisher_id
+                                            WHERE id = :id";
+                                        $stmt_update = $pdo->prepare($query_update);
+                                        $stmt_update->bindValue(':titule', $dados['titule']);
+                                        $stmt_update->bindValue(':page', $dados['page']);
+                                        $stmt_update->bindValue(':realese_date', $dados['realese_date']);
+                                        $stmt_update->bindValue(':author_id', $dados['author_id']);
+                                        $stmt_update->bindValue(':library_id', $dados['library_id']);
+                                        $stmt_update->bindValue(':publisher_id', $dados['publisher_id']);
+                                        $stmt_update->bindValue(':id', $id, PDO::PARAM_INT);
+                                        $stmt_update->execute();
+
+                                        if ($stmt_update->rowCount() > 0) {
+                                            $row_dados = $stmt_update->fetch(PDO::FETCH_ASSOC);
+                                            $titule = $row_dados['titule'];
+                                            $page = $row_dados['page'];
+                                            $realese_date = $row_dados['realese_date'];
+                                            $author_id = $row_dados['author_id'];
+                                            $library_id = $row_dados['library_id'];
+                                            $publisher_id = $row_dados['publisher_id'];
+
+                                            $_SESSION['msg'] = "<p style='color: #090;'>Livro atualizado com sucesso!</p>";
+                                            header("Location: /front/controllers/list/list_books.php");
+                                            exit;
+                                        } else {
+                                            $_SESSION['msg'] = "<p style='color: #f00;'>Erro ao atualizar o livro!</p>";
+                                            header("Location: /front/controllers/list/list_books.php");
+                                            exit;
+                                        }
+                                    }
+
+                                    ?>
+
+                                </div>
                                 <div class="row g-5 px-5 mx-3 ">
 
                                     <div class="col-md-7 col-lg-12">
-                                        <h5 class="mb-3">Informações revelantes sobre o livro</h5>
-                                        <form class="needs-validation" action="../../../pdo/registers/register_books?id=$id.php" method="POST" novalidate="">
+                                        <h5 class="mb-3">Edite as innformações revelantes sobre o livro</h5>
+                                        <form class="needs-validation" action="" method="POST" novalidate="">
                                             <div class="row g-3">
                                                 <div class="col-sm-7">
                                                     <label for="titule_book" class="form-label">Titulo</label>
-                                                    <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera" value="" required>
+                                                    <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera" value="<?php
+                                                                                                                                                                if (isset($titule))
+                                                                                                                                                                    echo $dados['titule'];
+                                                                                                                                                                elseif (isset($row_books_id['titule']))
+                                                                                                                                                                    echo $row_books_id['titule'];
+                                                                                                                                                                ?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o titulo do livro.
                                                     </div>
@@ -188,7 +265,12 @@ $pdo = conectar();
                                                 <div class="col-sm-2">
                                                     <label for="paginas_book" class="form-label">Número de
                                                         páginas</label>
-                                                    <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="" required>
+                                                    <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="<?php
+                                                                                                                                                        if (isset($page)) {
+                                                                                                                                                            echo $dados['page'];
+                                                                                                                                                        } elseif (isset($row_books_id['page'])) {
+                                                                                                                                                            echo $row_books_id['page'];
+                                                                                                                                                        } ?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar quantidade de páginas do livro.
                                                     </div>
@@ -196,7 +278,12 @@ $pdo = conectar();
                                                 <div class="col-sm-3">
                                                     <label for="realese_book" class="form-label">Data de
                                                         lançamento</label>
-                                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="" required>
+                                                    <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="<?php
+                                                                                                                                                                                                if (isset($realese_date)) {
+                                                                                                                                                                                                    echo $dados['realese_date'];
+                                                                                                                                                                                                } elseif (isset($row_books_id['realese_date'])) {
+                                                                                                                                                                                                    echo $row_books_id['realese_date'];
+                                                                                                                                                                                                } ?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o ano de lançamento do livro.
                                                     </div>
@@ -205,8 +292,13 @@ $pdo = conectar();
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar o autor</label>
-                                                    <select class="form-select" id="floatingSelect" name="id_author" aria-label="Floating label select example">
-                                                        <option selected></option>
+                                                    <select class="form-select" id="floatingSelect" name="author_id" aria-label="Floating label select example" value="">
+                                                        <option value=""><?php
+                                                                            if (isset($author_id)) {
+                                                                                echo $dados['publisher_name'];
+                                                                            } elseif (isset($row_books_id['author_id'])) {
+                                                                                echo $row_books_id['author_id'];
+                                                                            } ?></option>
 
                                                         <!-- Seleção para nomes dos autores section -->
                                                         <?php
@@ -228,7 +320,12 @@ $pdo = conectar();
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar o livraria</label>
-                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example">
+                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example" value="<?php
+                                                                                                                                                                        if (isset($library_id)) {
+                                                                                                                                                                            echo $dados['library_id'];
+                                                                                                                                                                        } elseif (isset($row_books_id['library_id'])) {
+                                                                                                                                                                            echo $row_books_id['library_id'];
+                                                                                                                                                                        } ?>">
                                                         <option selected></option>
                                                         <?php
                                                         $query_libraries = "SELECT * FROM libraries ";
@@ -249,7 +346,12 @@ $pdo = conectar();
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar a editora</label>
-                                                    <select class="form-select" id="floatingSelect" name="id_publishers" aria-label="Floating label select example">
+                                                    <select class="form-select" id="floatingSelect" name="publisher_id" aria-label="Floating label select example" value="<?php
+                                                                                                                                                                            if (isset($dados['publisher_id'])) {
+                                                                                                                                                                                echo $dados['publisher_id'];
+                                                                                                                                                                            } elseif (isset($row_books_id['publisher_id'])) {
+                                                                                                                                                                                echo $row_books_id['publisher_id'];
+                                                                                                                                                                            } ?>">
                                                         <option selected></option>
                                                         <!-- Seleção para nomes das editoras section -->
                                                         <?php
@@ -273,7 +375,7 @@ $pdo = conectar();
 
                                             <hr class="my-4">
 
-                                            <button class="w-20 btn btn-primary btn-ls" type="submit">Enviar</button>
+                                            <input class="w-20 btn btn-primary btn-ls" type="submit" value="Salvar" name="edit_books">
                                         </form>
                                     </div>
                                 </div>
@@ -282,7 +384,7 @@ $pdo = conectar();
                     </body>
                 </div>
             </main>
-            <footer class="text-muted py-5">
+            <footer class="text-muted text-center py-5">
                 <div class="container">
                     <p class="mb-1">© 2023 Biblioteca Pedbot</p>
                 </div>
