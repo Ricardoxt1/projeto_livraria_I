@@ -211,15 +211,18 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                             library_id = :library_id,
                                             publisher_id = :publisher_id
                                             WHERE id = :id";
+
                                         $stmt_update = $pdo->prepare($query_update);
-                                        $stmt_update->bindValue(':titule', $dados['titule']);
-                                        $stmt_update->bindValue(':page', $dados['page']);
-                                        $stmt_update->bindValue(':realese_date', $dados['realese_date']);
-                                        $stmt_update->bindValue(':author_id', $dados['author_id']);
-                                        $stmt_update->bindValue(':library_id', $dados['library_id']);
-                                        $stmt_update->bindValue(':publisher_id', $dados['publisher_id']);
-                                        $stmt_update->bindValue(':id', $id, PDO::PARAM_INT);
+                                        $stmt_update->bindParam(':titule', $dados['titule']);
+                                        $stmt_update->bindParam(':page', $dados['page']);
+                                        $stmt_update->bindParam(':realese_date', $dados['realese_date']);
+                                        $stmt_update->bindParam(':author_id', $dados['author_id']);
+                                        $stmt_update->bindParam(':library_id', $dados['library_id']);
+                                        $stmt_update->bindParam(':publisher_id', $dados['publisher_id']);
+                                        $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
                                         $stmt_update->execute();
+
+                                        $titule = trim($dados['titule']);
 
                                         if ($stmt_update->rowCount() > 0) {
                                             $row_dados = $stmt_update->fetch(PDO::FETCH_ASSOC);
