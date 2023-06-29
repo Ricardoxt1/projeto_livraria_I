@@ -190,8 +190,8 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
                                             $query_update = "UPDATE authors SET name = :name WHERE id = :id";
                                             $stmt_update = $pdo->prepare($query_update);
                                             $name = trim($dados['name']); // Apply filtering, removing whitespace
-                                            $stmt_update->bindValue(':name', $name);
-                                            $stmt_update->bindValue(':id', $id, PDO::PARAM_INT);
+                                            $stmt_update->bindParam(':name', $name);
+                                            $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
                                             $stmt_update->execute();
 
                                             if ($stmt_update->rowCount() > 0) {
