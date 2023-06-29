@@ -14,7 +14,7 @@ $result_books_id->execute();
 if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
     $row_books_id = $result_books_id->fetch(PDO::FETCH_ASSOC);
 } else {
-    $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não encontrado!</p>";
+    $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Livro não encontrado!</p>";
     header("Location: /front/controllers/list/list_books.php");
     exit;
 };
@@ -189,40 +189,40 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                 </div>
                                 <div>
                                     <?php
-                                    if (!empty($dados['edit_books'])) {
-                                        $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-                                        $empty_input = false;
-                                        $dados = array_map('trim', $dados);
-                                        if (in_array("", $dados)) {
-                                            $empty_input = true;
-                                            echo "<p class='mt-5' style='color: #f00;'>Necessario preencher todos os campos para edição!</p>";
-                                        }
-                                    }
 
                                     if (isset($_POST['edit_books'])) {
 
                                         // Valide os dados aqui, se necessário
 
-                                        $query_update = "UPDATE books SET 
-                                            titule = :titule,
-                                            page = :page,
-                                            realese_date = :realese_date,
-                                            author_id = :author_id,
-                                            library_id = :library_id,
-                                            publisher_id = :publisher_id
-                                            WHERE id = :id";
+                                        $query_update = "UPDATE books 
+                                        SET 
+                                        titule = :titule,
+                                        page = :page,
+                                        realese_date = :realese_date,
+                                        author_id = :author_id,
+                                        library_id = :library_id,
+                                        publisher_id = :publisher_id
+                                        WHERE id = $id";
 
                                         $stmt_update = $pdo->prepare($query_update);
-                                        $stmt_update->bindParam(':titule', $dados['titule']);
-                                        $stmt_update->bindParam(':page', $dados['page']);
-                                        $stmt_update->bindParam(':realese_date', $dados['realese_date']);
-                                        $stmt_update->bindParam(':author_id', $dados['author_id']);
-                                        $stmt_update->bindParam(':library_id', $dados['library_id']);
-                                        $stmt_update->bindParam(':publisher_id', $dados['publisher_id']);
-                                        $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
+                                        $name = trim($dados['name']);
+                                        $titule = trim($dados['titule']);
+                                        $stmt_update->bindParam(':titule', $titule);
+                                        $stmt_update->bindParam(':page', $page);
+                                        $stmt_update->bindParam(':realese_date', $realese_date);
+                                        $stmt_update->bindParam(':author_id', $author_id);
+                                        $stmt_update->bindParam(':library_id', $library_id);
+                                        $stmt_update->bindParam(':publisher_id', $publisher_id);
+
+                                        $titule = $_POST['titule'] ? $_POST['titule'] : false;
+                                        $page = $_POST['page'] ? $_POST['page'] : false;
+                                        $realese_date = $_POST['realese_date'] ? $_POST['realese_date'] : false;
+                                        $author_id = $_POST['author_id'] ? $_POST['author_id'] : false;
+                                        $library_id = $_POST['library_id'] ? $_POST['library_id'] : false;
+                                        $publisher_id = $_POST['publisher_id'] ? $_POST['publisher_id'] : false;
+
                                         $stmt_update->execute();
 
-                                        $titule = trim($dados['titule']);
 
                                         if ($stmt_update->rowCount() > 0) {
                                             $row_dados = $stmt_update->fetch(PDO::FETCH_ASSOC);
@@ -232,15 +232,12 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                             $author_id = $row_dados['author_id'];
                                             $library_id = $row_dados['library_id'];
                                             $publisher_id = $row_dados['publisher_id'];
-
                                             $_SESSION['msg'] = "<p style='color: #090;'>Livro atualizado com sucesso!</p>";
-                                            header("Location: /front/controllers/list/list_books.php");
-                                            exit;
                                         } else {
                                             $_SESSION['msg'] = "<p style='color: #f00;'>Erro ao atualizar o livro!</p>";
-                                            header("Location: /front/controllers/list/list_books.php");
-                                            exit;
                                         }
+                                        header("Location: /front/controllers/list/list_books.php");
+                                        exit;
                                     }
 
                                     ?>
@@ -256,7 +253,7 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                     <label for="titule_book" class="form-label">Titulo</label>
                                                     <input type="text" class="form-control" name="titule" id="titule_book" placeholder="A bela e a fera" value="<?php
                                                                                                                                                                 if (isset($titule))
-                                                                                                                                                                    echo $dados['titule'];
+                                                                                                                                                                    echo $titule;
                                                                                                                                                                 elseif (isset($row_books_id['titule']))
                                                                                                                                                                     echo $row_books_id['titule'];
                                                                                                                                                                 ?>">
@@ -269,11 +266,11 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                     <label for="paginas_book" class="form-label">Número de
                                                         páginas</label>
                                                     <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="<?php
-                                                                                                                                                        if (isset($page)) {
-                                                                                                                                                            echo $dados['page'];
-                                                                                                                                                        } elseif (isset($row_books_id['page'])) {
+                                                                                                                                                        if (isset($page))
+                                                                                                                                                            echo $page;
+                                                                                                                                                        elseif (isset($row_books_id['page']))
                                                                                                                                                             echo $row_books_id['page'];
-                                                                                                                                                        } ?>">
+                                                                                                                                                        ?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar quantidade de páginas do livro.
                                                     </div>
@@ -282,11 +279,11 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                     <label for="realese_book" class="form-label">Data de
                                                         lançamento</label>
                                                     <input type="number" min="1900" max="2099" step="1" class="form-control" name="realese_date" id="realese_book" placeholder="1999" value="<?php
-                                                                                                                                                                                                if (isset($realese_date)) {
-                                                                                                                                                                                                    echo $dados['realese_date'];
-                                                                                                                                                                                                } elseif (isset($row_books_id['realese_date'])) {
+                                                                                                                                                                                                if (isset($realese_date))
+                                                                                                                                                                                                    echo $realese_date;
+                                                                                                                                                                                                elseif (isset($row_books_id['realese_date']))
                                                                                                                                                                                                     echo $row_books_id['realese_date'];
-                                                                                                                                                                                                } ?>">
+                                                                                                                                                                                                ?>">
                                                     <div class="invalid-feedback">
                                                         É necessario digitar o ano de lançamento do livro.
                                                     </div>
@@ -295,13 +292,7 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar o autor</label>
-                                                    <select class="form-select" id="floatingSelect" name="author_id" aria-label="Floating label select example" value="">
-                                                        <option value=""><?php
-                                                                            if (isset($author_id)) {
-                                                                                echo $dados['publisher_name'];
-                                                                            } elseif (isset($row_books_id['author_id'])) {
-                                                                                echo $row_books_id['author_id'];
-                                                                            } ?></option>
+                                                    <select class="form-select" id="floatingSelect" name="author_id" aria-label="Floating label select example">
 
                                                         <!-- Seleção para nomes dos autores section -->
                                                         <?php
@@ -323,13 +314,7 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar o livraria</label>
-                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example" value="<?php
-                                                                                                                                                                        if (isset($library_id)) {
-                                                                                                                                                                            echo $dados['library_id'];
-                                                                                                                                                                        } elseif (isset($row_books_id['library_id'])) {
-                                                                                                                                                                            echo $row_books_id['library_id'];
-                                                                                                                                                                        } ?>">
-                                                        <option selected></option>
+                                                    <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example">
                                                         <?php
                                                         $query_libraries = "SELECT * FROM libraries ";
                                                         $result_libraries = $pdo->prepare($query_libraries);
@@ -349,13 +334,7 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
                                                 <div class="col-sm-2">
 
                                                     <label for="floatingSelect">Selecionar a editora</label>
-                                                    <select class="form-select" id="floatingSelect" name="publisher_id" aria-label="Floating label select example" value="<?php
-                                                                                                                                                                            if (isset($dados['publisher_id'])) {
-                                                                                                                                                                                echo $dados['publisher_id'];
-                                                                                                                                                                            } elseif (isset($row_books_id['publisher_id'])) {
-                                                                                                                                                                                echo $row_books_id['publisher_id'];
-                                                                                                                                                                            } ?>">
-                                                        <option selected></option>
+                                                    <select class="form-select" id="floatingSelect" name="publisher_id" aria-label="Floating label select example">
                                                         <!-- Seleção para nomes das editoras section -->
                                                         <?php
                                                         $query_publishers = "SELECT * FROM publishers ";
@@ -399,11 +378,12 @@ if (($result_books_id) and ($result_books_id->rowCount() != 0)) {
 
 
     </div>
+    <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
-    </div>
+
 </body>
 
 </html>

@@ -102,7 +102,7 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../controllers/list/list_authors.php">Voltar a listagem</a>
             </div>
         </div>
     </header>
@@ -189,7 +189,7 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
 
                                             $query_update = "UPDATE authors SET name = :name WHERE id = :id";
                                             $stmt_update = $pdo->prepare($query_update);
-                                            $name = trim($dados['name']); // Apply filtering, removing whitespace
+                                            $name = trim($dados['name']);
                                             $stmt_update->bindParam(':name', $name);
                                             $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
                                             $stmt_update->execute();
@@ -227,11 +227,11 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
 
 
 
-                                                <hr class="my-4" </hr>
-
-                                                <input class="w-20 btn btn-primary btn-ls" type="submit" value="Salvar" name="edit_authors">
                                             </div>
+                                            <hr class="my-4">
+
                                         </div>
+                                        <input class="w-20 btn btn-primary btn-ls" type="submit" value="Salvar" name="edit_authors">
                                     </form>
                                 </div>
 
@@ -242,12 +242,17 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
 
                 </div>
             </main>
-            <footer class="text-muted text-center py-5">
-
-                <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+            <footer class="text-muted py-5">
+                <div class="container">
+                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+                </div>
+            </footer>
         </div>
-        </footer>
-    </div>
+        <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
+        <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+        <script src="dashboard.js"></script>
 </body>
 
 </html>

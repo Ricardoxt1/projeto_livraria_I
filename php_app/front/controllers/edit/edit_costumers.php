@@ -183,8 +183,6 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                         <?php
 
                                         if (isset($_POST['edit_costumers'])) {
-                                            $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
                                             // Valide os dados aqui, se necessário
 
                                             $query_update = "UPDATE costumers 
@@ -194,7 +192,8 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                             phone_number = :phone_number,
                                             address = :address,
                                             email = :email
-                                            WHERE id = :id";
+                                            WHERE id = $id";
+
                                             $stmt_update = $pdo->prepare($query_update);
                                             $name = trim($dados['name']); // Apply filtering, removing whitespace
                                             $stmt_update->bindParam(':name', $name);
@@ -202,20 +201,24 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                             $stmt_update->bindParam(':email', $email);
                                             $stmt_update->bindParam(':cpf', $cpf);
                                             $stmt_update->bindParam(':address', $address);
+                                            $name = $_POST['name'] ? $_POST['name'] : false;
+                                            $phone_number = $_POST['phone_number'] ? $_POST['phone_number'] : false;
+                                            $email = $_POST['email'] ? $_POST['email'] : false;
+                                            $cpf = $_POST['cpf'] ? $_POST['cpf'] : false;
+                                            $address = $_POST['address'] ? $_POST['address'] : false;
 
-                                            $stmt_update->bindParam(':id', $id);
+                                            // $stmt_update->bindParam(':id', $id);
 
                                             $stmt_update->execute();
 
                                             if ($stmt_update->rowCount() > 0) {
                                                 $row_dados = $stmt_update->fetch(PDO::FETCH_ASSOC);
-                                                var_dump($row_dados);
                                                 $name = $row_dados['name'];
                                                 $phone_number = $row_dados['phone_number'];
                                                 $email = $row_dados['email'];
                                                 $cpf = $row_dados['cpf'];
                                                 $address = $row_dados['address'];
-                                                $_SESSION['msg'] = "<p style='color: #090;'>Autor atualizado com sucesso!</p>";
+                                                $_SESSION['msg'] = "<p style='color: #090;'>Usuario atualizado com sucesso!</p>";
                                             } else {
                                                 $_SESSION['msg'] = "<p style='color: #f00;'>Erro ao atualizar o usuario!</p>";
                                             }
@@ -234,9 +237,7 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                                         <div class="col-sm-7">
                                                             <label for="nome_costumer" class="form-label">Nome completo</label>
                                                             <input type="text" class="form-control" name="name" id="nome_costumer" placeholder="fulano da silva " value="<?php
-                                                                                                                                                                            if (isset($name))
-                                                                                                                                                                                echo $dados['name'];
-                                                                                                                                                                            elseif (isset($row_costumers['name']))
+                                                                                                                                                                            if (isset($row_costumers['name']))
                                                                                                                                                                                 echo $row_costumers['name'];
                                                                                                                                                                             ?>">
                                                             <div class="invalid-feedback">
@@ -247,9 +248,7 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                                         <div class="col-sm-5">
                                                             <label for="numero_costumer" class="form-label">Telefone</label>
                                                             <input type="number" class="form-control" name="phone_number" id="numero_costumer" placeholder="(00) 0000-0000" value="<?php
-                                                                                                                                                                                    if (isset($phone_number))
-                                                                                                                                                                                        echo $dados['phone_number'];
-                                                                                                                                                                                    elseif (isset($row_costumers['phone_number']))
+                                                                                                                                                                                    if (isset($row_costumers['phone_number']))
                                                                                                                                                                                         echo $row_costumers['phone_number'];
                                                                                                                                                                                     ?>">
                                                             <div class="invalid-feedback">
@@ -259,9 +258,7 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                                         <div class="col-sm-7">
                                                             <label for="email_costumer" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
                                                             <input type="email" class="form-control" name="email" id="email_costumer" placeholder="you@example.com" value="<?php
-                                                                                                                                                                            if (isset($email))
-                                                                                                                                                                                echo $dados['email'];
-                                                                                                                                                                            elseif (isset($row_costumers['email']))
+                                                                                                                                                                            if (isset($row_costumers['email']))
                                                                                                                                                                                 echo $row_costumers['email'];
                                                                                                                                                                             ?>">
                                                             <div class="invalid-feedback">
@@ -272,9 +269,7 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                                         <div class="col-sm-5">
                                                             <label for="cpf_costumer" class="form-label">CPF</label>
                                                             <input type="number" class="form-control" name="cpf" id="cpf_costumer" placeholder="123.456.789-09" min="1" max="14" value="<?php
-                                                                                                                                                                                        if (isset($cpf))
-                                                                                                                                                                                            echo $dados['cpf'];
-                                                                                                                                                                                        elseif (isset($row_costumers['cpf']))
+                                                                                                                                                                                        if (isset($row_costumers['cpf']))
                                                                                                                                                                                             echo $row_costumers['cpf'];
                                                                                                                                                                                         ?>">
                                                             <div class="invalid-feedback">
@@ -285,21 +280,19 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                                                         <div class="col-12">
                                                             <label for="address_costumer" class="form-label">Endereço</label>
                                                             <input type="text" class="form-control" name="address" id="address_costumer" placeholder="Main ST 1234" value="<?php
-                                                                                                                                                                            if (isset($address))
-                                                                                                                                                                                echo $dados['address'];
-                                                                                                                                                                            elseif (isset($row_costumers['address']))
+                                                                                                                                                                            if (isset($row_costumers['address']))
                                                                                                                                                                                 echo $row_costumers['address'];
                                                                                                                                                                             ?>">
                                                             <div class="invalid-feedback">
                                                                 Por favor, entre com endereço valido.
                                                             </div>
                                                         </div>
-                                                        
-                                                        
+
+
                                                     </div>
-                                                    
+
                                                     <hr class="my-4">
-                                                    
+
                                                     <input class="w-20 btn btn-primary btn-ls" type="submit" value="Salvar" name="edit_costumers">
 
                                                 </form>
@@ -315,12 +308,18 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
                     </body>
                 </div>
             </main>
-            <footer class="text-muted text-center py-5">
-
-                <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+            <footer class="text-muted py-5">
+                <div class="container">
+                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+                </div>
+            </footer>
         </div>
-        </footer>
     </div>
+    <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
+    <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
 </body>
 
 </html>
