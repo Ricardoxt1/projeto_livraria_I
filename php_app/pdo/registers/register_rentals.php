@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('../../config.php');
 $pdo = conectar();
 
@@ -13,16 +13,18 @@ try {
     $smt->bindParam(':costumer_id', $costumer_id);
     $smt->bindParam(':book_id', $book_id);
     $smt->bindParam(':employee_id', $employee_id);
+
+    
     $costumer_id = $_POST['id_costumers_rental'] ? $_POST['id_costumers_rental'] : false;
     $book_id = $_POST['id_book_rental'] ? $_POST['id_book_rental'] : false;
-    $employee_id = $_POST['id_employee_rental'] ? $_POST['id_employee_rental'] : false;
-    $convert_rental = implode("/", array_reverse(explode("-", $rental)));
-    $convert_delivery = implode("/", array_reverse(explode("-", $delivery)));
-    $rental = $_POST['rental'] ? $_POST['rental'] : false;
-    $delivery = $_POST['delivery'] ? $_POST['delivery'] : false;
-
+    $employee_id = $_POST['id_employees_rental'] ? $_POST['id_employees_rental'] : false;
+    $convert_rental = $_POST['rental'] ? $_POST['rental'] : false;
+    $convert_delivery = $_POST['delivery'] ? $_POST['delivery'] : false;
+    // Convertendo as datas para formato inglês
+    $rental = date('Y-m-d', strtotime(str_replace('/', '-', $convert_rental)));
+    $delivery = date('Y-m-d', strtotime(str_replace('/', '-', $convert_delivery)));
+    
     $smt->execute();
-
 
     $lastInsertId = $pdo->lastInsertId();
 

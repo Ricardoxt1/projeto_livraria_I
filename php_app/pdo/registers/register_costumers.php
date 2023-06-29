@@ -3,7 +3,7 @@ session_start();
 include_once('../../config.php');
 $pdo = conectar();
 
-$tabela = 'costumers';
+
 
 try {
     $tabela = 'costumers';
