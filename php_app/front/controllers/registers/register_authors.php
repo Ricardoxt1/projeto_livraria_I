@@ -167,6 +167,7 @@ session_start();
                                     <form class="needs-validation" action="../../../pdo/registers/register_authors.php" method="post" novalidate="">
                                         <div class="row g-3">
                                             <div class="col-sm-7">
+                                                
                                                 <label for="name_author" class="form-label">Nome do autor</label>
                                                 <input type="text" class="form-control" name="name" id="name_author" placeholder="fulano da silva" value="" required="">
                                                 <div class="invalid-feedback">
@@ -194,10 +195,12 @@ session_start();
 
         </div>
     </div>
+    <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
+
 </body>
 
 </html>

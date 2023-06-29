@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 include_once '../../../config.php';
 $pdo = conectar();
 ?>
@@ -148,6 +150,15 @@ $pdo = conectar();
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Listagem de Alugueis</h1>
                 </div>
+                <div>
+                    <?php
+
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-ls">
                         <thead>
@@ -161,7 +172,7 @@ $pdo = conectar();
                         </thead>
 
                         <?php
-                        $query_rentals = "SELECT rental, delivery, costumers.name as costumers_name, books.titule as books_titule, employees.name as employees_name 
+                        $query_rentals = "SELECT rentals.id as rentals_id, rental, delivery, costumers.name as costumers_name, books.titule as books_titule, employees.name as employees_name 
                         FROM rentals 
                         inner join books on books.id = rentals.book_id 
                         inner join employees on employees.id = rentals.employee_id 
@@ -171,9 +182,9 @@ $pdo = conectar();
 
                         if (($result_rentals) and ($result_rentals->rowCount() != 0)) {
                             while ($row_rentals = $result_rentals->fetch(PDO::FETCH_ASSOC)) {
-                                $id = $row_rentals['id'];
-                                        echo "                             
-                                        <form action='../../../pdo/list/list_rentals.php' method='get'>
+                                $id = $row_rentals['rentals_id'];
+                                echo "                             
+                                        <form action='' method='get'>
                                             <tbody>
                                                 <tr>
                                                     <td name='id_costumers_rentals'>$row_rentals[costumers_name]</td>
@@ -196,7 +207,6 @@ $pdo = conectar();
                 
                                             </tbody>
                                         </form>";
-                                
                             }
                         } else {
                             echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
@@ -216,8 +226,7 @@ $pdo = conectar();
             </main>
         </div>
     </div>
-
-
+    <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
