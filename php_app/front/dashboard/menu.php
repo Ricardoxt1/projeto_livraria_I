@@ -75,8 +75,7 @@
 
   <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Biblioteca Pedbot</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-      data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   </header>
@@ -88,55 +87,35 @@
           <ul class="nav flex-column">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">
-                <span data-feather="home" class="align-text-bottom"></span>
-                Menu
+                <span data-feather="home" class="align-text-bottom">Menu</span>
+
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../controllers/registers/register_costumers.php">
-                <span data-feather="listagem" class="align-text-bottom"></span>
-                Cadastro
+                <span data-feather="listagem" class="align-text-bottom">Cadastro</span>
+
               </a>
             </li>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../controllers/registers/register_rentals.php">
-                <span name="name" class="align-text-bottom"></span>
-                Alugar livro
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../controllers/list/list_users.html">
-                <span data-feather="listagem" class="align-text-bottom"></span>
-                Listagem de Usuarios
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../controllers/registers/register_publishers.php">
-                <span data-feather="leitores" class="align-text-bottom"></span>
-                Listagem das Editoras
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../front/dashboard/books.html">
-                <span data-feather="listagem" class="align-text-bottom"></span>
-                Listagem de Livros
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../controllers/list/list_authors.html">
-                <span data-feather="leitores" class="align-text-bottom"></span>
-                Listagem de Autores
-              </a>
-            </li>
+                <span name="name" class="align-text-bottom">Alugar livro</span>
 
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../controllers/list/list_costumers.php">
+                <span data-feather="listagem" class="align-text-bottom">Listagem</span>
+
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Usuarios</h1>
         </div>
 
@@ -281,14 +260,13 @@
   </div>
 
 
-  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+  <script src="dashboard.js"></script> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-    integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
   <script src="dashboard.js"></script>
 </body>
 
