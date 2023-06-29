@@ -1,4 +1,6 @@
 <?php
+session_start();
+ob_start();
 include_once '../../../config.php';
 $pdo = conectar();
 ?>
@@ -141,6 +143,14 @@ $pdo = conectar();
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Listagem de Editoras</h1>
                 </div>
+                <div>
+                    <?php
+                    if (isset($_SESSION['msg'])) {
+                        echo $_SESSION['msg'];
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-striped table-ls">
                         <thead>
@@ -152,10 +162,10 @@ $pdo = conectar();
 
 
                         <?php
-                        $query_publishers = "SELECT name FROM publishers ";
+                        $query_publishers = "SELECT * FROM publishers ";
                         $result_publishers = $pdo->prepare($query_publishers);
                         $result_publishers->execute();
-                        
+
 
 
                         if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
@@ -165,6 +175,7 @@ $pdo = conectar();
                                 <form action='' method='get'>
                                     <tbody>
                                         <tr>
+                                            <input type='hidden' name='id' value=$id />
                                             <td name='name_publishers'>$row_publishers[name]</td>
                                             <td name='edit_name'><a href='../edit/edit_publishers.php?id=$id'><svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>
                                                                         <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
