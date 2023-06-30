@@ -15,8 +15,9 @@ $pdo = conectar();
     <title>Cadastro de livros</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-
     <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dashboard/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -70,10 +71,6 @@ $pdo = conectar();
             -webkit-overflow-scrolling: touch;
         }
     </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="../dashboard/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -184,7 +181,7 @@ $pdo = conectar();
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-3">
                                                     <label for="paginas_book" class="form-label">Número de
                                                         páginas</label>
                                                     <input type="number" class="form-control" name="page" id="paginas_book" placeholder="123" value="" required>
@@ -201,7 +198,7 @@ $pdo = conectar();
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-7">
 
                                                     <label for="floatingSelect">Selecionar o autor</label>
                                                     <select class="form-select" id="floatingSelect" name="id_author" aria-label="Floating label select example">
@@ -224,7 +221,7 @@ $pdo = conectar();
                                                     </select>
 
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-4">
 
                                                     <label for="floatingSelect">Selecionar o livraria</label>
                                                     <select class="form-select" id="floatingSelect" name="library_id" aria-label="Floating label select example">
@@ -245,7 +242,7 @@ $pdo = conectar();
                                                     </select>
 
                                                 </div>
-                                                <div class="col-sm-2">
+                                                <div class="col-sm-6">
 
                                                     <label for="floatingSelect">Selecionar a editora</label>
                                                     <select class="form-select" id="floatingSelect" name="id_publishers" aria-label="Floating label select example">
@@ -277,15 +274,15 @@ $pdo = conectar();
                                     </div>
                                 </div>
                             </main>
+                            <footer class="text-muted text-center py-5">
+                                <div class="container">
+                                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
+                                </div>
+                            </footer>
                         </div>
                     </body>
                 </div>
             </main>
-            <footer class="text-muted py-5">
-                <div class="container">
-                    <p class="mb-1">© 2023 Biblioteca Pedbot</p>
-                </div>
-            </footer>
 
 
         </div>

@@ -15,8 +15,8 @@ $pdo = conectar();
     <title>Aluguel de livros</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-
     <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dashboard/dashboard.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -71,9 +71,6 @@ $pdo = conectar();
         }
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <link href="../dashboard/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -158,7 +155,9 @@ $pdo = conectar();
                         <div class="container">
                             <main>
                                 <div class="py-5 text-center">
-                                    <h2>Aluguel de livros</h2>
+                                    <div>
+                                        <h2>Aluguel de livros</h2>
+                                    </div>
                                     <div>
                                         <?php
                                         if (isset($_SESSION['msg'])) {
@@ -279,7 +278,7 @@ $pdo = conectar();
                                 </div>
                             </main>
 
-                            <footer class="text-muted py-5">
+                            <footer class="text-muted text-center py-5">
                                 <div class="container">
                                     <p class="mb-1">© 2023 Biblioteca Pedbot</p>
                                 </div>

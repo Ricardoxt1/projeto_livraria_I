@@ -11,8 +11,9 @@ session_start();
     <title>Cadastro de autores</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-
+    <link href="../dashboard/dashboard.css" rel="stylesheet">
     <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -67,9 +68,6 @@ session_start();
         }
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <link href="../dashboard/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -167,7 +165,7 @@ session_start();
                                     <form class="needs-validation" action="../../../pdo/registers/register_authors.php" method="post" novalidate="">
                                         <div class="row g-3">
                                             <div class="col-sm-7">
-                                                
+
                                                 <label for="name_author" class="form-label">Nome do autor</label>
                                                 <input type="text" class="form-control" name="name" id="name_author" placeholder="fulano da silva" value="" required="">
                                                 <div class="invalid-feedback">
@@ -180,7 +178,7 @@ session_start();
                                         </div>
                                     </form>
                                 </div>
-                                <footer class="text-muted py-5">
+                                <footer class="text-muted text-center py-5">
                                     <div class="container">
                                         <p class="mb-1">© 2023 Biblioteca Pedbot</p>
                                     </div>

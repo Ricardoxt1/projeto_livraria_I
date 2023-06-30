@@ -11,8 +11,9 @@ session_start();
     <title>Cadastro de Editoras</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-
     <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dashboard/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -65,10 +66,7 @@ session_start();
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link href="../dashboard/dashboard.css" rel="stylesheet">
+    </style> 
 
 </head>
 
@@ -173,7 +171,7 @@ session_start();
                                         </div>
                                     </form>
                                 </div>
-                                <footer class="text-muted py-5">
+                                <footer class="text-muted text-center py-5">
                                     <div class="container">
                                         <p class="mb-1">© 2023 Biblioteca Pedbot</p>
                                     </div>
