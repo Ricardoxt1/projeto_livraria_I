@@ -5,7 +5,6 @@ include_once '../../../config.php';
 $pdo = conectar();
 ?>
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/5.2/examples/album/ -->
 <html lang="en">
 
 <head>
@@ -18,6 +17,7 @@ $pdo = conectar();
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
     <link href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -111,7 +111,7 @@ $pdo = conectar();
                     //select para apresentar aos cards
                     $query_books = "SELECT  books.id, books.titule, books.page, books.realese_date, books.author_id as author_id, authors.name as authors_name, publishers.name as publishers_name  FROM books INNER JOIN authors ON authors.id = books.author_id INNER JOIN publishers ON publishers.id = books.publisher_id";
                     $result_books = $pdo->prepare($query_books);
-                    $result_books->execute();                
+                    $result_books->execute();
                     if (($result_books) and ($result_books->rowCount() != 0)) {
                         while ($row_book = $result_books->fetch(PDO::FETCH_ASSOC)) {
                             $id = $row_book['id'];
@@ -136,7 +136,7 @@ $pdo = conectar();
                                                                                                 <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>
                                                                                            </svg>
                                                             </a>
-                                                            <a class='m-2' href='../delete/delete_books.php?id=$id'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+                                                            <a class='m-2' href='../../../pdo/delete/delete_books.php?id=$id'><svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
                                                                                                 <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z' />
                                                                                                 <path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z' /></svg>
                                                              </a>
@@ -147,7 +147,7 @@ $pdo = conectar();
                                         </div>";
                         }
                     } else {
-                        echo "<p style='color:red;'>Não foi realizada a listagem com sucesso.</p>";
+                        echo "<p style='color:red;'>Não foi possível realizar a listagem com sucesso.</p>";
                     }
                     ?>
                 </div>
@@ -164,6 +164,9 @@ $pdo = conectar();
             </div>
         </footer>
     </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

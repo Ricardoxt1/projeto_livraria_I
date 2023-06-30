@@ -16,6 +16,8 @@ $pdo = conectar();
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link rel="stylesheet" href="../../../bootstrap-5.2.3/dist/css/bootstrap.min.css">
+    <link href="../dashboard/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 
     <style>
@@ -71,13 +73,12 @@ $pdo = conectar();
         }
     </style>
 
-    <!-- Custom styles for this template -->
-    <link href="../dashboard/dashboard.css" rel="stylesheet">
+    
 </head>
 
 <body>
     <header class="navbar navbar-dark sticky-top bg-primary flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6">Biblioteca Pedbot</a>
+        <a class="navbar-brand text-light col-md-3 col-lg-2 me-0 px-3 fs-6">Biblioteca Pedbot</a>
         <button class="navbar-toggler position-center d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -141,7 +142,7 @@ $pdo = conectar();
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm col-lg-3 start px-md-5">
+            <main class="col-md-9 ms-sm col-lg-4 start px-md-5">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Listagem de Autores</h1>
                 </div>
@@ -165,8 +166,8 @@ $pdo = conectar();
                         $result_authors->execute();
                         if (($result_authors) and ($result_authors->rowCount() != 0)) {
                             while ($row_authors = $result_authors->fetch(PDO::FETCH_ASSOC)) {
-                            $id = $row_authors['id'];
-                          
+                                $id = $row_authors['id'];
+
                                 echo "                             
                                 <form action='' method='get'>
                                     <tbody>
@@ -178,10 +179,34 @@ $pdo = conectar();
                                                                          <path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>
                                                                          <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/></svg>
                                                                  </a>
-                                                <td name='delete_name'><a href='../delete/delete_authors.php?id=$id'><svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
-                                                                              <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z' />
-                                                                              <path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z' /></svg>
+                                                                    <td name='delete_name'>
+                                                                        <a href='#' data-toggle='modal' data-target='#confirmDeleteModal$id'>
+                                                                            <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
+                                                                                <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z' />
+                                                                                <path d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z' />
+                                                                            </svg>
                                                                         </a>
+                                                                    
+                                                                        <!-- Modal de confirmação de deleção -->
+                                                                        <div class='modal fade' id='confirmDeleteModal$id' tabindex='-1' role='dialog' aria-labelledby='confirmDeleteModalLabel' aria-hidden='true'>
+                                                                            <div class='modal-dialog' role='document'>
+                                                                                <div class='modal-content'>
+                                                                                    <div class='modal-header'>
+                                                                                        <h5 class='modal-title' id='confirmDeleteModalLabel'>Confirmar Deleção</h5>
+                                                                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                                                                            <span aria-hidden='true'>&times;</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <div class='modal-body'>
+                                                                                        Tem certeza de que deseja excluir este autor?
+                                                                                    </div>
+                                                                                    <div class='modal-footer'>
+                                                                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+                                                                                        <a href='../../../pdo/delete/delete_authors.php?id=$id' class='btn btn-danger'>Excluir</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                 </td>
                                                 
                                             </td>
@@ -191,7 +216,7 @@ $pdo = conectar();
                                 </form>";
                             }
                         } else {
-                            echo "<p style='color:red;'>Não foi realizadar a listagem com sucesso.</p>";
+                            echo "<p style='color:red;'>Não foi possível realizar a listagem com sucesso.</p>";
                         };
 
                         ?>
@@ -205,6 +230,9 @@ $pdo = conectar();
             </div>
         </footer>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../../../bootstrap-5.2.3/dist/css/bootstrap.css"></script>
     <script src="../../../bootstrap-5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
