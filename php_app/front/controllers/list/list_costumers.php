@@ -87,7 +87,7 @@ $pdo = conectar();
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../menu/menu.html">Voltar ao menu</a>
             </div>
         </div>
     </header>

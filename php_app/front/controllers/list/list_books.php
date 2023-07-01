@@ -100,7 +100,7 @@ $pdo = conectar();
     <main>
         <div class='album py-5 bg-light'>
             <div class='container'>
-                <div class='row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4'>
+                <div class='row row-cols-xs-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3'>
                     <?php
 
                     if (isset($_SESSION['msg'])) {
@@ -153,6 +153,7 @@ $pdo = conectar();
                 </div>
             </div>
         </div>
+      
         <footer class="text-muted text-center py-5">
             <div class="container">
                 <p class="float-end mb-1">

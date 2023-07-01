@@ -84,7 +84,7 @@ $pdo = conectar();
         </button>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../dashboard/menu.php">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../menu/menu.html">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -142,7 +142,7 @@ $pdo = conectar();
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm col-lg-4 start px-md-5">
+            <main class="col-md-9 ms-sm col-lg-4 px-md-5">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Listagem de Autores</h1>
                 </div>
@@ -187,7 +187,6 @@ $pdo = conectar();
                                                                             </svg>
                                                                         </a>
                                                                     
-                                                                        <!-- Modal de confirmação de deleção -->
                                                                         <div class='modal fade' id='confirmDeleteModal$id' tabindex='-1' role='dialog' aria-labelledby='confirmDeleteModalLabel' aria-hidden='true'>
                                                                             <div class='modal-dialog' role='document'>
                                                                                 <div class='modal-content'>
@@ -224,6 +223,7 @@ $pdo = conectar();
                 </div>
             </main>
         </div>
+
         <footer class="text-muted text-center py-5">
             <div class="container">
                 <p class="mb-1">© 2023 Biblioteca Pedbot</p>
