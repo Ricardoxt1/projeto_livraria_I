@@ -15,7 +15,7 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
     $row_publishers = $result_publishers->fetch(PDO::FETCH_ASSOC);
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não encontrado!</p>";
-    header("Location: /front/controllers/list/list_publishers.php");
+    header("Location: /front/controllers/list/list_publishers");
     exit;
 };
 
@@ -100,7 +100,7 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
         </button>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../controllers/list/list_publishers.php">Voltar a listagem</a>
+                <a class="nav-link px-3" href="../../controllers/list/list_publishers">Voltar a listagem</a>
             </div>
         </div>
     </header>
@@ -116,24 +116,24 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/list/list_costumers.php">
+                            <a class="nav-link" href="../../controllers/list/list_costumers">
                                 <span data-feather="register_costumers" class="align-text-bottom">Usuarios</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/list/list_authors.php">
+                            <a class="nav-link" href="../../controllers/list/list_authors">
                                 <span data-feather="register_authors" class="align-text-bottom">Autores</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/list/list_books.php">
+                            <a class="nav-link" href="../../controllers/list/list_books">
                                 <span data-feather="register_books" class="align-text-bottom">Livros</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/list/list_employees.php">
+                            <a class="nav-link" href="../../controllers/list/list_employees">
                                 <span data-feather="register_employees" class="align-text-bottom">Funcionário(a)</span>
                             </a>
                         </li>
@@ -142,12 +142,12 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="../../controllers/registers/register_rentals.php">
+                                <a class="nav-link" href="../../controllers/registers/register_rentals">
                                     <span name="rentals" class="align-text-bottom">Alugar livro</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../list/list_costumers.php">
+                                <a class="nav-link" href="../list/list_costumers">
                                     <span data-feather="list" class="align-text-bottom">Listagem</span>
                                 </a>
                             </li>
@@ -193,7 +193,7 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
                                             } else {
                                                 $_SESSION['msg'] = "<p style='color: #f00;'>Erro ao atualizar a editora!</p>";
                                             }
-                                            header("Location: /front/controllers/list/list_publishers.php");
+                                            header("Location: /front/controllers/list/list_publishers");
                                             exit;
                                         }
 
