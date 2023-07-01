@@ -9,7 +9,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (empty($id)) {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não encontrada!</p>";
-    header("Location: /front/controllers/list/list_publishers.php");
+    header("Location: /front/controllers/list/list_publishers");
     exit;
 }
 
@@ -26,12 +26,12 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
     } else {
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não deletada com sucesso pois pertence a um alguel!</p>";
     }
-    header("Location: /front/controllers/list/list_publishers.php");
+    header("Location: /front/controllers/list/list_publishers");
     exit;
 
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não encontrado!</p>";
-    header("Location: /front/controllers/list/list_publishers.php");
+    header("Location: /front/controllers/list/list_publishers");
     exit;
 }
 

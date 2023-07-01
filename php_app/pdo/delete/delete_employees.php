@@ -9,7 +9,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (empty($id)) {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Funcionario(a) não encontrado!</p>";
-    header("Location: /front/controllers/list/list_employees.php");
+    header("Location: /front/controllers/list/list_employees");
     exit;
 }
 
@@ -26,12 +26,12 @@ if (($result_employees) and ($result_employees->rowCount() != 0)) {
     } else {
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Funcionario(a) não deletado com sucesso pois pertence a um alguel!</p>";
     }
-    header("Location: /front/controllers/list/list_employees.php");
+    header("Location: /front/controllers/list/list_employees");
     exit;
 
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Funcionario(a) não encontrado!</p>";
-    header("Location: /front/controllers/list/list_employees.php");
+    header("Location: /front/controllers/list/list_employees");
     exit;
 }
 

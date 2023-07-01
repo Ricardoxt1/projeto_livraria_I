@@ -9,7 +9,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (empty($id)) {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Aluguel não encontrado!</p>";
-    header("Location: /front/controllers/list/list_rentals.php");
+    header("Location: /front/controllers/list/list_rentals");
     exit;
 }
 
@@ -26,10 +26,10 @@ if (($result_rentals) and ($result_rentals->rowCount() != 0)) {
     } else {
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Aluguel não deletado com sucesso!</p>";
     }
-    header("Location: /front/controllers/list/list_rentals.php");
+    header("Location: /front/controllers/list/list_rentals");
     exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Aluguel não encontrado!</p>";
-    header("Location: /front/controllers/list/list_rentals.php");
+    header("Location: /front/controllers/list/list_rentals");
     exit;
 }

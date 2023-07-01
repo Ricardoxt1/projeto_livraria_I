@@ -9,7 +9,7 @@ var_dump($id);
 
 if (empty($id)) {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não encontrado!</p>";
-    header("Location: /front/controllers/list/list_authors.php");
+    header("Location: /front/controllers/list/list_authors");
     exit;
 }
 
@@ -26,11 +26,11 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
     } else {
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não deletado com sucesso por pertencer a um livro cadastrado!</p>";
     }
-    header("Location: /front/controllers/list/list_authors.php");
+    header("Location: /front/controllers/list/list_authors");
     exit;
 
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não encontrado!</p>";
-    header("Location: /front/controllers/list/list_authors.php");
+    header("Location: /front/controllers/list/list_authors");
     exit;
 }

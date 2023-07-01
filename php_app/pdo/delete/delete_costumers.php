@@ -9,7 +9,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (empty($id)) {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuario não encontrado!</p>";
-    header("Location: /front/controllers/list/list_costumers.php");
+    header("Location: /front/controllers/list/list_costumers");
     exit;
 }
 
@@ -26,12 +26,12 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
     } else {
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuario não deletado com sucesso pois há um alguel em seu nome!</p>";
     }
-    header("Location: /front/controllers/list/list_costumers.php");
+    header("Location: /front/controllers/list/list_costumers");
     exit;
 
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuario não encontrado!</p>";
-    header("Location: /front/controllers/list/list_costumers.php");
+    header("Location: /front/controllers/list/list_costumers");
     exit;
 }
 
