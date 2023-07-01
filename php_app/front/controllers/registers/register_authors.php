@@ -79,7 +79,7 @@ session_start();
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../menu/menu.html">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../menu/menu">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -95,25 +95,25 @@ session_start();
                             </h6>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_costumers.php">
+                            <a class="nav-link" href="../../controllers/registers/register_costumers">
                                 <span data-feather="register_costumers" class="align-text-bottom">Usuarios</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_books.php">
+                            <a class="nav-link" href="../../controllers/registers/register_books">
                                 <span data-feather="register_books" class="align-text-bottom">Livros</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_publishers.php">
+                            <a class="nav-link" href="../../controllers/registers/register_publishers">
                                 <span data-feather="register_publishers" class="align-text-bottom">Editoras</span>
 
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../controllers/registers/register_employees.php">
+                            <a class="nav-link" href="../../controllers/registers/register_employees">
                                 <span data-feather="register_employees" class="align-text-bottom">Funcionário(a)</span>
 
                             </a>
@@ -124,13 +124,13 @@ session_start();
                         </h6>
                         <ul class="nav flex-column mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" href="../../controllers/registers/register_rentals.php">
+                                <a class="nav-link" href="../../controllers/registers/register_rentals">
                                     <span name="rentals" class="align-text-bottom">Alugar livro</span>
 
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../list/list_costumers.php">
+                                <a class="nav-link" href="../list/list_costumers">
                                     <span data-feather="list" class="align-text-bottom">Listagem</span>
 
                                 </a>
@@ -162,7 +162,7 @@ session_start();
                                             <h5 class="mb-3">Informações revelantes sobre o autor</h5>
                                         </div>
                                     </div>
-                                    <form class="needs-validation" action="../../../pdo/registers/register_authors.php" method="post" novalidate="">
+                                    <form class="needs-validation" action="../../../pdo/registers/register_authors" method="post" novalidate="">
                                         <div class="row g-3">
                                             <div class="col-sm-7">
 
