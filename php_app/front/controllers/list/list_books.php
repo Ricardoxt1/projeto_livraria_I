@@ -89,7 +89,7 @@ $pdo = conectar();
             </a>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="../../controllers/list/list_costumers.php">Voltar a listagem</a>
+                    <a class="nav-link px-3" href="../../controllers/list/list_costumers">Voltar a listagem</a>
                 </div>
             </div>
         </header>
@@ -157,7 +157,7 @@ $pdo = conectar();
         <footer class="text-muted text-center py-5">
             <div class="container">
                 <p class="float-end mb-1">
-                    <a href="../list/list_books.php"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
+                    <a href="../list/list_books"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
                             <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z" />
                         </svg></a>
                 </p>

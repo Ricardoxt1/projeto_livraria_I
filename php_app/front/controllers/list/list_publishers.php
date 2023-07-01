@@ -81,7 +81,7 @@ $pdo = conectar();
         </button>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="../../menu/menu.html">Voltar ao menu</a>
+                <a class="nav-link px-3" href="../../menu/menu">Voltar ao menu</a>
             </div>
         </div>
     </header>
@@ -98,22 +98,22 @@ $pdo = conectar();
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_books.php">
+                            <a class="nav-link" href="../list/list_books">
                                 <span data-feather="list_books" class="align-text-bottom">Livros</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_authors.php">
+                            <a class="nav-link" href="../list/list_authors">
                                 <span data-feather="list_authors" class="align-text-bottom">Autores</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_costumers.php">
+                            <a class="nav-link" href="../list/list_costumers">
                                 <span data-feather="list_costumers" class="align-text-bottom">Usuarios</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_employees.php">
+                            <a class="nav-link" href="../list/list_employees">
                                 <span data-feather="list_employees" class="align-text-bottom">Funcionário(a)</span>
                             </a>
                         </li>
@@ -125,12 +125,12 @@ $pdo = conectar();
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="../list/list_rentals.php">
+                            <a class="nav-link" href="../list/list_rentals">
                                 <span name="rentals" class="align-text-bottom">Alugueis</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../registers/register_costumers.php">
+                            <a class="nav-link" href="../registers/register_costumers">
                                 <span data-feather="registers" class="align-text-bottom">Cadastrar</span>
                             </a>
                         </li>
