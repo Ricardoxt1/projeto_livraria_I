@@ -28,12 +28,12 @@ try {
     if ($lastInsertId) {
         session_start();
         $_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso!</p>";
-        header("Location: /front/controllers/registers/register_books.php");
+        header("Location: /front/controllers/registers/register_books");
         exit;
     } else {
         session_start();
         $_SESSION['msg'] = "<p style='color:red;'>Cadastro não foi realizado com sucesso.</p>";
-        header("Location: /front/controllers/registers/register_books.php");
+        header("Location: /front/controllers/registers/register_books");
         exit;
     }
 } catch (PDOException $e) {
