@@ -23,11 +23,11 @@ if (($result_rentals) and ($result_rentals->rowCount() != 0)) {
 
     if ($delete_rentals->execute()) {
         $_SESSION['msg'] = "<p style='color: #090;'>Aluguel deletado com sucesso!</p>";
-    } else {
+        header("Location: /front/pages/list/listAuthors");
+    } 
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Aluguel não deletado com sucesso!</p>";
-    }
-    header("Location: /front/pages/list/listRentals");
-    exit;
+        header("Location: /front/pages/list/listRentals");
+        exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Aluguel não encontrado!</p>";
     header("Location: /front/pages/list/listRentals");

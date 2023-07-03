@@ -23,11 +23,11 @@ if (($result_costumers) and ($result_costumers->rowCount() != 0)) {
 
     if ($delete_costumers->execute()) {
         $_SESSION['msg'] = "<p style='color: #090;'>Usuario deletado com sucesso!</p>";
-    } else {
+        header("Location: /front/pages/list/listAuthors");
+    } 
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuario não deletado com sucesso pois há um alguel em seu nome!</p>";
-    }
-    header("Location: /front/pages/list/listCostumers");
-    exit;
+        header("Location: /front/pages/list/listCostumers");
+        exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuario não encontrado!</p>";
     header("Location: /front/pages/list/listCostumers");

@@ -23,11 +23,11 @@ if (($result_books) and ($result_books->rowCount() != 0)) {
 
     if ($delete_books->execute()) {
         $_SESSION['msg'] = "<p style='color: #090;'>Livro deletado com sucesso!</p>";
-    } else {
+        header("Location: /front/pages/list/listAuthors");
+    } 
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Livro não deletado com sucesso pois está alugado!</p>";
-    }
-    header("Location: /front/pages/list/listBooks");
-    exit;
+        header("Location: /front/pages/list/listBooks");
+        exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Livro não encontrado!</p>";
     header("Location: /front/pages/list/listBooks");

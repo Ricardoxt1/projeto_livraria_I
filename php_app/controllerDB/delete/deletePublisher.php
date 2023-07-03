@@ -23,11 +23,11 @@ if (($result_publishers) and ($result_publishers->rowCount() != 0)) {
 
     if ($delete_publishers->execute()) {
         $_SESSION['msg'] = "<p style='color: #090;'>Editora deletada com sucesso!</p>";
-    } else {
+        header("Location: /front/pages/list/listAuthors");
+    } 
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não deletada com sucesso pois pertence a um alguel!</p>";
-    }
-    header("Location: /front/pages/list/listPublishers");
-    exit;
+        header("Location: /front/pages/list/listPublishers");
+        exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Editora não encontrado!</p>";
     header("Location: /front/pages/list/listPublishers");

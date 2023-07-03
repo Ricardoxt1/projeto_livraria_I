@@ -23,11 +23,11 @@ if (($result_authors) and ($result_authors->rowCount() != 0)) {
 
     if ($delete_authors->execute()) {
         $_SESSION['msg'] = "<p style='color: #090;'>Autor deletado com sucesso!</p>";
-    } else {
+        header("Location: /front/pages/list/listAuthors");
+    } 
         $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não deletado com sucesso por pertencer a um livro cadastrado!</p>";
-    }
-    header("Location: /front/pages/list/listAuthors");
-    exit;
+        header("Location: /front/pages/list/listAuthors");
+        exit;
 } else {
     $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Autor não encontrado!</p>";
     header("Location: /front/pages/list/listAuthors");
