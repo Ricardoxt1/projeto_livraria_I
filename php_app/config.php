@@ -1,20 +1,19 @@
 <?php
 
-function conectar()
+function connect()
 {
 
-    $servidor = "mysql";
-    $usuario = "root";
-    $senha = "root";
+    $server = "mysql";
+    $user = "root";
+    $password = "root";
     $dbname = "library";
 
     try {
-        $pdo = new PDO("mysql:host=$servidor; dbname=$dbname", $usuario, $senha);
-        $pdo->exec("SET CHARACTER SET utf8");
+        $connection = new PDO("mysql:host=$server; dbname=$dbname", $user, $password);
+        $connection->exec("SET CHARACTER SET utf8");
     } catch (\Throwable $th) {
         return $th;
-        die;
     }
 
-    return $pdo;
+    return $connection;
 }
