@@ -17,11 +17,11 @@ try {
         $_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso!</p>";
         header("Location: /front/pages/register/registerPublisher");
         exit;
-    } else {
+    }
         $_SESSION['msg'] = "<p style='color:red;'>Cadastro não foi realizado com sucesso.</p>";
         header("Location: /front/pages/register/registerPublisher");
         exit;
-    }
+    
 } catch (PDOException $e) {
     echo 'Error: ' . $e->getMessage();
 }
